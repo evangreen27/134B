@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Attributes</title>
+</head>
+<body onload="alert('onload fired when page was loaded')">
+	<textarea onblur="alert('onblur fired')" placeholder="click on this field and then leave the field" rows="3"></textarea>
+
+	<br />
+
+	<select onchange="alert('onchange fired')">
+	  <option disabled selected>select a cat breed</option>
+	  <option>Tabby</option>
+	  <option>Russian Blue</option>
+	</select>
+
+	<br />
+
+	<div onclick="alert('onclick fired')">click on this text</div>
+
+	<br />
+
+	<div ondblclick="alert('ondblclick fired')">double-click on this text</div>
+
+	<br />
+
+	<!--form> TODO IDK HOW TO TEST THIS
+		<input type="file" onerror="alert('onerror fired')" />
+  		<input type="submit" />
+	</form-->
+
+	<br />
+
+	<textarea onfocus="this.value = 'onfocus fired'" placeholder="click on this field"></textarea>
+
+	<br />
+
+	<textarea oninput="alert('oninput fired')" placeholder="type something here"></textarea>
+
+	<br />
+
+	<form>
+		<input oninvalid="alert('oninvalid fired')" placeholder="leave this BLANK and click submit" size="25" required />
+		<input type="submit" />
+	</form>
+
+	<br />
+
+	<textarea onkeydown="alert('onkeydown fired')" placeholder="type a letter here"></textarea>
+
+	<br />
+
+	<textarea onkeypress="alert('onkeypress fired')" placeholder="type a letter here"></textarea>
+
+	<br />
+
+	<textarea onkeyup="alert('onkeyup fired')" placeholder="type a letter here"></textarea>
+
+	<br />
+
+	<!--onload was tested when page was loaded-->
+
+	<div onmousedown="alert('onmousedown fired')">click on this text</div>
+
+	<br />
+
+	<div onmouseenter="alert('onmouseenter fired')" onmouseleave="alert('onmouseleave fired')" style="width: 200px;height: 100px; border: 1px solid black;">put your cursor in this box and then move it out</div>
+
+	<br />
+
+	<div onmousemove="alert('onmousemove fired')" style="width: 200px;height: 100px; border: 1px solid black;">move the cursor around this box</div>
+
+	<br />
+
+	onmouseleave:
+	<div onmouseleave="alert('onmouseleave fired for outer box')" style="width: 300px;height: 150px; border: 1px solid black;">
+		put your cursor in this outer box and then move it out
+		<div onmouseleave="alert('onmouseleave fired for inner box')" style="width: 150px;height: 75px; border: 1px solid black;">put your cursor in this inner box and then move it out</div>
+	</div>
+
+	<br />
+
+	onmouseout:
+	<div onmouseout="alert('onmouseout fired for outer box')" style="width: 300px;height: 150px; border: 1px solid black;">
+		put your cursor in this outer box and then move it in the inner box
+		<div onmouseout="alert('onmouseout fired for inner box')" style="width: 150px;height: 75px; border: 1px solid black;">put your cursor in this inner box and then move it out</div>
+	</div>
+
+	<br />
+
+	onmouseenter:
+	<div onmouseenter="alert('onmouseenter fired for outer box')" style="width: 300px;height: 150px; border: 1px solid black;">
+		put your cursor in this outer box and then move it in the inner box
+		<div onmouseenter="alert('onmouseenter fired for inner box')" style="width: 150px;height: 75px; border: 1px solid black;">put your cursor in this inner box and then move it out</div>
+	</div>
+
+	<br />
+
+	onmouseover:
+	<div onmouseover="alert('onmouseover fired for outer box')" style="width: 300px;height: 150px; border: 1px solid black;">
+		put your cursor in this outer box and then move it in the inner box
+		<div onmouseover="alert('onmouseover fired for inner box')" style="width: 150px;height: 75px; border: 1px solid black;">put your cursor in this inner box and then move it out</div>
+	</div>
+
+	<br />
+
+	<div onmousewheel="alert('onmousewheel fired')" style="width: 150px;height: 75px; border: 1px solid black; overflow: scroll">put your cursor over this box and scroll using your mouse -----------------------------------</div>
+
+	<br />
+
+	<form onreset="alert('onreset fired')">
+	  <textarea placeholder="type text in this field and watch what happens when you press reset" rows="4"></textarea>
+	  <input type="reset">
+	</form>
+
+	<br />
+
+	<div onscroll="alert('onscroll fired')" style="width: 150px;height: 75px; border: 1px solid black; overflow: scroll">put your cursor over this box and scroll using your mouse or keyboard or by clicking the arrows on the right side of this box</div>
+
+	<br />
+
+	<input onselect="alert('onselect fired')" value="select some of this text" />
+
+	<br />
+
+	<form onsubmit="alert('onsubmit fired')">
+	  <input type="submit" value="press this submit button">
+	</form>
+</body>
+</html>
