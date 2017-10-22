@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note that the following CSS link is only for demonstrative purposes -->
+	<!-- It doesn't have any styles to apply, but is "linking" this page to it -->
+	<!-- This demonstrates a link relationship. -->
+	<link rel="stylesheet" href="default.css">
+	<title>Links</title>
+</head>
+<body>
+	<h1>Homework 1 Links</h1>
+	<nav>
+		<h1>Navigation Bar</h1>
+		<ul>
+			<li><a href="#homepage">Links Homepage</a></li>
+			<li><a href="#internal">Links Internal</a></li>
+			<li><a href="#external">Links External</a></li>
+			<li><a href="#within">Links Within This Page</a></li>
+			<li><a href="#othersection">Links To Sections Other Pages</a></li>
+			<li><a href="#imagemap">Links Image Maps</a></li>
+		</ul>
+	</nav>
+	<section id="homepage">
+		<h1>Homepage</h1>
+		<p>
+			You are currently viewing the homepage.
+		</p>
+	</section>
+	<section id="internal">
+		<h1>Internal</h1>
+		<p>
+		Clicking on links in this section are internal links.
+		This means that you are visiting a different page, but still on the site.
+		Try clicking on these links to visit different pages on this website:
+		</p>
+		<ul>
+			<li><a href="links_test/link1.html">Internal Link 1</a></li>
+			<li><a href="links_test/link2.html">Internal Link 2</a></li>
+		</ul>
+	</section>
+	<section id="external">
+		<h1>External</h1>
+		<p>
+		The following links will lead you outside of this website. These are called
+		external links. Once you leave, you won't be on this site anymore. Let's
+		give it a try! The cats have told us to give you some options of various
+		destinations to visit. Don't worry, they should be safe. That is, unless
+		you are allergic to search engines! (Definitely not allergic to cats!)
+		</p>
+		<ul>
+			<li><a href="http://www.google.com">Google</a></li>
+			<li><a href="http://www.bing.com">Bing</a></li>
+			<li><a href="http://www.yahoo.com">Yahoo</a></li>
+		</ul>
+	</section>
+	<section id="within">
+		<h1>Within</h1>
+		<p>
+			This cat wants to tell you something. Did you know that you can navigate
+			up and down this page? For example, click the link below to navigate back
+			to the top of this page, without even leaving this page at all! This will
+			take you back to the Homepage section. Then, try using the Navigation Bar
+			to bring yourself back to this Within section!
+		</p>
+		<ul>
+			<li><a href="#homepage">Take me to Homepage at the top of this page!</a></li>
+		</ul>
+	</section>
+	<section id="othersection">
+		<h1>Other</h1>
+		<p>
+		By now, you might want to visit a particular page. On that particular page,
+		you might think to yourself, meow, you already know where you want to be,
+		ON that page! Well lucky for you, we can take you there. If you click the
+		link below, this cat promises to take you to Link 3, under a section called
+		"Meowing 101". Try it out!
+		</p>
+		<ul>
+			<li><a href="links_test/link3.html#meowing101">Take me to a section within some other page!</a></li>
+		</ul>
+	</section>
+	<section id="imagemap">
+		<h1>Image Map</h1>
+		<p>
+		Look, we get it. We are all cats inside. On some days, we feel like cats. On
+		other days, we literally *are* cats. Well luckily for you, today is the day
+		to experience how awesome cats are. By clicking on different sections of the
+		cat image below, you will end up at different university websites. Why?
+		Because cats love education. Also remember to use your back button to come
+		back after you leave.
+		</p>
+		<p>
+			Something tells me the left side of the cat likes the UC System. I think
+			the right side of this cat likes the CSU System...
+		</p>
+		<img id="catpic" src="links_test/educat.jpg" border="0" width="326" height="239" orgWidth="326" orgHeight="239" usemap="#educat" alt="" />
+		<map name="educat" id="catpic">
+		<area  alt="UCSD" title="UCSD" href="http://ucsd.edu/" shape="rect" coords="0,0,182,239" style="outline:none;" target="_self"     />
+		<area  alt="SDSU" title="SDSU" href="http://sdsu.edu/" shape="rect" coords="184,0,326,239" style="outline:none;" target="_self"     />
+		</map>
+	</section>
+</body>
+</html
