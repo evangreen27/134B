@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scripts</title>
+</head>
+<body>
+  <h1>JavaScript and script and script and script...</h1>
+  <p>
+    As we already know, cats do NOT love sticking to a script. In fact, they
+    just can't. They are wild creatures who roam the living room at night. That
+    is why they are so lovable. But JavaScript? That's a different story.
+    Cats love JavaScript.
+  </p>
+
+  <h2>Section 1: script, noscript, and tags galore!</h2>
+  <p>
+    If you love JS as much as this old cat here, then we'll assume your browser
+    also loves JS. This means your browser has JS enabled. How do I know?
+    Because you should be able to see the following message highlighted in pink!
+    But if you don't have JS enabled, we'll definitely tell you with an error
+    message.
+  </p>
+
+  <script>
+    document.write("<h3 style='background-color:pink'>You definitely <3 JavaScript!</h3>")
+  </script>
+  <!-- If you don't have JS enabled, you get the following fallback message -->
+  <noscript><strong style='background-color:yellow'>
+    Well, here it is: This sentence is the error message, and it
+    seems like you don't love JS as much as cats do, and you probably don't have
+    JS enabled on your browser!
+    <table border="1">
+      <thead>
+        <tr>
+          <td>You</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Cats</td>
+          <td>1</td>
+        </tr>
+      </thead>
+    </table>
+  </strong></noscript>
+
+  <h2>Section 2: templates</h2>
+  <p>
+    This cat still has more tricks up its paws and fur. Now, we will test
+    the template element! We do this by creating a simple table with only
+    header names. But by the magic of JavaScript, we'll insert table data
+    into the table itself. Pretty neat!
+  </p>
+  <p>
+    Take note that if you don't have JS turned on, you won't be able to
+    see the entire beautiful JavaScript table!
+  </p>
+
+  <table border="1">
+    <caption>Look at this beautiful JavaScript Table...</caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Preferred Cat Size</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <template id="trows">
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </template>
+
+  <script>
+  // Check if 'template' is supported in browser!
+  if ('content' in document.createElement('template')) {
+
+    // Create table using template
+    var t = document.querySelector('#trows'),
+    td = t.content.querySelectorAll("td");
+
+    // Create new table data
+    td[0].textContent = "Evan";
+    td[1].textContent = "Small";
+    // Clone row and insert to table
+    var tb = document.getElementsByTagName("tbody");
+    var clone = document.importNode(t.content, true);
+    tb[0].appendChild(clone);
+
+    // Create new table data
+    td[0].textContent = "Jorenne";
+    td[1].textContent = "Medium";
+    // Clone row and insert to table
+    var clone = document.importNode(t.content, true);
+    tb[0].appendChild(clone);
+
+    // Create a new row
+    td[0].textContent = "Jace";
+    td[1].textContent = "Large";
+    // Clone row and insert to table
+    var clone = document.importNode(t.content, true);
+    tb[0].appendChild(clone);
+  }
+  else {
+    // table not supported
+    document.write("<p>Sorry, looks like something went wrong while trying to use templates</p>")
+  }
+  </script>
+
+  <h2>Section 3: canvas!</h2>
+  <p>
+    Finally, let's draw a cat on the canvas using JS. If your browser supports
+    this, then you will see a post modern art cat. The red is the sun.
+    The shapes are the outline of the cat in geometric form. The cat itself
+    is yellow. It has a big round head, 4 legs, and a short tail. Very art!
+  </p>
+
+   <canvas id="myCanvas">
+     Actually, your browser doesn't support using the canvas tag. Sorry.
+   </canvas>
+  <script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(0, 0, 300, 300);
+    ctx.fillStyle = "red";
+    ctx.fillRect(260, 0, 40,40)
+    ctx.beginPath();
+    ctx.arc(100,75,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.rect(150,50,100,70);
+    ctx.stroke();
+    ctx.rect(150,120,7,20);
+    ctx.stroke();
+    ctx.rect(170,120,7,20);
+    ctx.stroke();
+    ctx.rect(220,120,7,20);
+    ctx.stroke();
+    ctx.rect(240,120,7,20);
+    ctx.stroke();
+    ctx.rect(250,70,40,3);
+    ctx.stroke();
+  </script>
+</body>
+</html
