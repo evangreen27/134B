@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forms</title>
+</head>
+<body>
+  <h1>Check out these cool forms!</h1>
+
+  <form>
+    <fieldset>
+      <legend>Sign Up Form</legend>
+      Full Name: <br />
+      <input type="text" name="fullname" required/><br />
+
+      Username: <br />
+      <input type="text" name="username" required/><br />
+
+      Password: <br />
+      <input type="password" name="password" required/><br />
+
+      <input type="submit" value="Submit" >
+    </fieldset>
+  </form>
+  <br />
+
+  <form>
+    <fieldset>
+      <legend>Placeholder Sign Up Form</legend>
+      Full Name: <br />
+      <input type="text" name="fn" placeholder="First Last" required/><br />
+
+      Email: <br />
+      <input type="text" name="username" placeholder="email@example.com"/><br />
+
+      Password: <br />
+      <input type="password" name="password" placeholder="password" required/><br />
+
+      <input type="submit" value="Submit" >
+    </fieldset>
+  </form>
+  <br />
+
+  <form>
+    <fieldset>
+      <legend>Class Sign Up Example</legend>
+      Full Name: <br />
+      <input type="text" name="fn" placeholder="First Last" required/><br />
+
+      Email: <br />
+      <input type="text" name="username" placeholder="email@example.com"/><br />
+
+      Password: <br />
+      <input type="password" name="password" placeholder="password" required/><br />
+
+      Gender: <br />
+      <input type="radio" name="gd" id="male" value="male" checked />
+      <label for="male">Male</label>
+      <input type="radio" name="gd" id="female" value="female"/>
+      <label for="female">Female</label>
+      <input type="radio" name="gd" id="other" value="other"/>
+      <label for="other">Other</label><br />
+
+      <p>
+        Note: In this next section of the form, we will ask you more course
+        specific questions.
+      </p>
+
+      Total Quarter Units:
+      <input type="number" name="units" value="12" min="0" max="24" step="4" /><br />
+      GPA Expected:
+      <input type="number" name="units" value="4.0" min="0" max="4" step="0.5" /><br />
+      Happiness Predictor (Sliding): Not Happy
+      <input type="range" id="a" value="33" /> Very Happy
+      <output name="op" for="a">%</output><br />
+
+      Completion Progress Meter:
+      <meter min="0" low="10" optimum="50" high="80" max="100" value="95"></meter><br />
+
+      <input type="submit" value="Submit" >
+    </fieldset>
+  </form>
+  <br />
+</body>
+</html
