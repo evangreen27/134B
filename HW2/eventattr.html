@@ -24,10 +24,7 @@
 
 	<br />
 
-	<!--form> TODO IDK HOW TO TEST THIS
-		<input type="file" onerror="alert('onerror fired')" />
-  		<input type="submit" />
-	</form-->
+	<img src="invalid-image.png" onerror="alert('onerror fired when page was loaded because invalid image was loaded on page load')">
 
 	<br />
 
@@ -104,7 +101,7 @@
 
 	<br />
 
-	<div onmousewheel="alert('onmousewheel fired')" style="width: 150px;height: 75px; border: 1px solid black; overflow: scroll">put your cursor over this box and scroll using your mouse -----------------------------------</div>
+	<textarea onmousewheel="alert('onmousewheel fired')" style="width: 150px;height: 75px; border: 1px solid black; overflow: scroll">put your cursor over this box and scroll using your mouse -----------------------------------</textarea>
 
 	<br />
 
@@ -126,5 +123,12 @@
 	<form onsubmit="alert('onsubmit fired')">
 	  <input type="submit" value="press this submit button">
 	</form>
+
+	<br />
+
+	<p>Because every page we host needs to have a link to the HTML validator
+	showing the current syntax state of the page, you can find the link to
+	the validator to this page here:
+	<a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fcse134bejj.firebaseapp.com%2FHW2%2Feventattr.html">Validate this page!</a></p>
 </body>
 </html>
