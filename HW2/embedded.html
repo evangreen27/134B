@@ -1,0 +1,67 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cat site</title>
+        <style>
+             body { color: rgb(255, 255, 255); background: rgb(51, 34, 34); }
+        </style>
+    </head>
+
+    <body>
+        <br />
+        <p>basic image with src and alt</p>
+            <a href="http://i.imgur.com">
+                <img src="http://i.imgur.com/KxFO2vS.jpg" width="200" height="200" alt="cat eating spaghetti">
+            </a>
+            <p>Graph with alt description of the statistics</p>
+            <p><img src="http://www.pmslweb.com/the-blog/wp-content/uploads/2014/12/13-things-you-say-when-near-a-cat.png" alt="Figure 1. Things You Say When Near a Cat. 
+                Pie chart: KITTY KITTY KITTY = 90%, Hi [insert cat's name] = 7%, intelligent things = 3%."></p>
+                <br />
+            <p>Graph with statistics in a table using the data</p>
+            <figure>
+                <figcaption>Pet Preferences Among Families</figcaption>
+                <img src="https://www.surveygizmo.com/wp-content/uploads/2015/08/bar-graph.png" alt="Bar chart: Preferences of each pet in the typical US family.">
+                <table>
+                <caption>Preferences of each pet in the typical US family</caption>
+                <tr><td><th scope="col">USA</tr>
+                <tr><th scope="row">Cats <td>40%</tr>
+                <tr><th scope="row">Dogs<td>35%</tr>
+                <tr><th scope="row">Bunnies<td>15%</tr>
+                <tr><th scope="row">Fish<td>5%</tr>
+                <tr><th scope="row">Hamsters<td>3%</tr>
+                <tr><th scope="row">Ferrets<td>2%</tr>
+                </table>
+            </figure>
+            <p>here's a wiki page on cat language with iframes:</p>
+            <iframe sandbox src="https://en.wikipedia.org/wiki/Cat_communication" width="600" height="600"></iframe>
+            <br />
+            <iframe srcdoc="Cats like using srcdoc!"></iframe>
+            <p>Meow embedded mp3</p>
+            <p><embed src="http://soundbible.com/mp3/Cat_Meow_2-Cat_Stevens-2034822903.mp3" autostart="0"></p>
+            <p>Embedding meow video</p>
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/0R1f1tPVjDk" allowfullscreen></iframe>
+            <p>An image in an object tag</p>
+            <object data="https://d4n5pyzr6ibrc.cloudfront.net/media/27FB7F0C-9885-42A6-9E0C19C35242B5AC/4785B1C2-8734-405D-96DC23A6A32F256B/thul-90efb785-97af-5e51-94cf-503fc81b6940.jpg?response-content-disposition=inline" type="image/jpeg" typemustmatch name="catpic"></object>
+            <br />
+            using the video tag on a local video file
+            <br />
+            <video src="media/meow.mp4" width="384" height="288" controls></video>
+            <br />
+            using the audio tag on a local audio file
+            <br />
+            <audio src="media/meow2.mp3" controls></audio>
+            <br /><p>using the source tag for a video with track for subtitles</p>
+            <video width="384" height="288" controls>
+                <source src='media/catt.mp4' type='video/mp4'>
+                <track kind="subtitles" src="media/subtitles_en.vtt" srclang="en" label="English">
+            </video>
+            <br />
+            <p>click my tail to go to the wiki page using the map and area tags!</p>
+            <img src="https://www.royalcanin.com/~/media/Royal-Canin/Product-Categories/cat-adult-landing-hero.ashx" usemap = "#cat" alt = "touch the cat's tail!">
+            <map name="cat">
+            <area shape=rect coords="0,0,200,200" href = "https://en.wikipedia.org/wiki/Tail" alt = "touch to go to tail wiki page">
+            </map>
+
+    </body>
+</html>
