@@ -4,6 +4,8 @@
 	<title>Event Attributes</title>
 </head>
 <body onload="alert('onload fired when page was loaded')">
+	<!-- This document will not validate because onmousewheel is obsolete. -->
+	
 	<textarea onblur="alert('onblur fired')" placeholder="click on this field and then leave the field" rows="3"></textarea>
 
 	<br />
@@ -24,7 +26,7 @@
 
 	<br />
 
-	<img src="invalid-image.png" onerror="alert('onerror fired when page was loaded because invalid image was loaded on page load')">
+	<img src="invalid-image.png" alt="invalid image" onerror="alert('onerror fired when page was loaded because invalid image was loaded on page load')">
 
 	<br />
 
@@ -101,7 +103,9 @@
 
 	<br />
 
-	<textarea onmousewheel="alert('onmousewheel fired')" style="width: 150px;height: 75px; border: 1px solid black; overflow: scroll">put your cursor over this box and scroll using your mouse -----------------------------------</textarea>
+	<div onmousewheel="alert('onmousewheel fired')" style="width: 150px;height: 75px; border: 1px solid black; overflow: scroll">put your cursor over this box and scroll using your mouse -----------------------------------</div>
+
+	<div onwheel="alert('onwheel fired; note that onmousewheel is deprecated')" style="width: 150px;height: 75px; border: 1px solid black; overflow: scroll">put your cursor over this box and scroll using your mouse -----------------------------------</div>
 
 	<br />
 
