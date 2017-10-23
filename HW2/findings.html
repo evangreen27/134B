@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Findings</title>
 </head>
@@ -13,5 +13,10 @@
   <li>We were initially confused about how onmousewheel differs from onscroll. We then found that the difference is that the former only fires when you physically scroll using your mouse or trackpad. Onscroll fires as well but also when scrolling with the arrow keys, the page up/down keys, etc.</li>
   <li>There were more event attributes that sounded like they do the same thing to us. After researching these, we found that some events, like onmouseover and onmouseout also fire when their child element gets triggered. This is what distinguishes them from similar event attributes, respectively onmouseenter and onmouseleave. Other than that, they actually do the same thing.</li>
   </ol>
+
+	<p>Because every page we host needs to have a link to the HTML validator
+	showing the current syntax state of the page, you can find the link to
+	the validator to this page here:
+	<a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fcse134bejj.firebaseapp.com%2FHW2%2Ffindings.html">Validate this page!</a></p>
 </body>
 </html>
