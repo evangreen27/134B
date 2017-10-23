@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Global Attributes - this is the title</title>
+	<style>
+		.meow{ color: red; }
+		.hiss{ text-align: center; }
+		#bramble{ color: yellow; }
+	</style>
+</head>
+<body>
+	<a href="https://animalcenter.org/adopt-a-pet/adoptable-cats" accesskey="c">the access key to get your very own cat is: c</a>
+	<p>Note: Here's how you can use the access key instead of clicking on the link above</p>
+	<p>IE, Chrome, Safari, Opera (version 15 and up): Alt + c</p>
+	<p>Opera (before version 15): Shift + Esc + c</p>
+	<p>Firefox: Alt + Shift + c</p>
+
+	<br />
+
+	<p class="meow">This text has the class meow so it should be red.</p>
+	<p class="meow hiss">This text has the class meow as well as the class hiss so it should be red and centered.</p>
+
+	<br />
+
+	<p contenteditable="true">This paragraph should be editable. Try to change the following sentence: The cat was stuck in the tree and felt excited.</p>
+	<p contenteditable="false">This paragraph should not be editable. You shouldn't be able to change the following sentence: The cat was hungry, so he kept meowing at his owner.</p>
+
+	<br />
+
+	<p dir="rtl">This sentence is right to left: Bramble liked to take cat naps!</p>
+	<p dir="ltr">This sentence is left to right: Meeko liked to climb on his cat tree!</p>
+
+	<br />
+
+	<p hidden>This sentence is hidden. Bramble likes to hide under the bed when Meeko is tries to sniff her.</p>
+	<p>The paragraph above should be invisible. Meeko can smell Bramble's presence but she's hiding under the bed.</p>
+
+	<br />
+
+	<p id="bramble">The id for this text is bramble. Bramble is a black cat with yellow eyes so this text should be yellow.</p>
+
+	<br />
+
+	<p lang="en">This sentence is in English. I like cats.</p>
+	<p lang="es">Esta oración está en español. Me gusta gatos.</p>
+
+	<br />
+
+	<p contenteditable="true" spellcheck="true">This editable paragraph has spell check. Meeko stepppped on my laptpo as I typed this.</p>
+
+	<br />
+
+	<p style="font-style: oblique;">This text has inline styles. We don't know what oblique is, and neither do cats.</p>
+
+	<br />
+
+	<a href="#" tabindex="2">Bramble has tab index 2.</a><br />
+	<a href="#" tabindex="5">Meeko has tab index 5.</a><br />
+	<a href="#" tabindex="4">The new cat will have tab index 4.</a>
+	<p>Press the tab key a couple of times on your keyboard to cycle through these links.</p>
+
+	<!--The title attribute is in the <head> tag-->
+
+	<br />
+
+	<p class="notranslate">This should not be translated: me gusta gatos.</p>
+	<p>This should be translated: me gusta gatos.</p>
+	<p>To test this out, use any translation tools.</p>
+</body>
+</html>
