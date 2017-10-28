@@ -2,6 +2,7 @@
 /* I may have removed a selector or two */
 
 @import url('https://fonts.googleapis.com/css?family=Monoton');  /* Set this for Monton a Google Font ...figure out their syntax */
+@import url('https://www.fonts.com/font/monotype/lucida-calligraphy/regular');
 
 * {
     box-sizing: border-box;
@@ -33,6 +34,8 @@ font-size: 2.8em;
 }
 body {
     background-image: url("background.png");
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 main {
@@ -45,7 +48,7 @@ header {
 }
 section {
 	/* color rgb(243,234,95) is used */
-    background-color: rgb(243,234,95);
+    
 
     color: white; /* font color changed to white*/
     text-align: center; /* text is centered */
@@ -55,6 +58,8 @@ section {
     -webkit-flex-direction: column-reverse;
     display: flex;
     flex-direction: column-reverse;
+
+    margin: 1em;
 }
 section > div {
     /* font is 'Comic Sans MS, text is automatically adjusted to lowercase do not mod the HTML */
@@ -91,40 +96,46 @@ aside {
     font-family: sans-serif;
     font-size: 2rem;
     text-align: center;
+    padding: 0.5em 0.7em;
+    width: 11.5em;
+    margin: auto;
+    margin-bottom: 1em;
 }
-
+aside p{
+  font-size: 1.2em;
+}
 svg {
   fill: white;
   width: 2rem;
   height: 2rem;
 }
-
 footer {
   background-color: rgb(250,85,193);
-  font-family: cursive;
   text-align: center;
+  padding: 1em 0;
+}
+footer span{
+  font-family: 'lucida calligraphy regular', cursive, serif;
+  font-size: 0.7em;
 }
 footer img {
   width: 20%;
 }
-/*footer img:hover {
-  width: 20%;
-}*/
-
 footer .wrapper span {
-  display: none;
+  visibility: hidden;
   position: absolute;
   right: 30%;
   background: white;
   border: 0.25rem solid black;
   border-radius: 0.5rem;
   box-shadow: 0 8px 6px -6px black;
+  padding: 0.3em;
 }
-
+/* The following makes the arrow of the tooltip */
 footer .wrapper span:after {
-	content: ‘’;
+	content: " ";
 	position: absolute;
-	left: 0;
+	left: -1%;
 	top: 50%;
 	width: 0;
 	height: 0;
@@ -133,6 +144,9 @@ footer .wrapper span:after {
 	border-left: 0;
 	margin-top: -0.625rem;
 	margin-left: -0.625rem;
+}
+footer div:hover span{
+  visibility: visible;
 }
 
 /* Oh no! The file has been truncated I guess you have to fill it in */
@@ -147,9 +161,11 @@ section span{
     font-size: 1.5em;
 }
 #zap{
+    background-color: rgb(243,234,95);
     width: 13em;
     position: relative;
     margin: auto;
+    margin-bottom: 2em;
     box-shadow: 0 0 0 0.05em white inset;
     border: 0.05em solid rgb(243,234,95);
     border-radius: 2%;
