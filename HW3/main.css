@@ -5,6 +5,7 @@
 
 * {
     box-sizing: border-box;
+    font-size: 1.8rem;
 }
 .logo{
     font-family: 'Monoton', cursive;
@@ -16,21 +17,29 @@
     position: relative;
     bottom: 0.5em;
     box-shadow: 0 0.07em 0.2em black;
+    font-size: 1.7em;
 }
 .fun {
 font-family: 'Courier';
 font-style:normal;
 font-weight:300;
 color: white;
-text-shadow: 0 0 2px #ee0000;
+text-shadow: 0 0 2px #e00;
 text-transform: uppercase;
-
+font-size: 2.8em;
 }
-
+#kern1, #kern3{
+    font-size: 1em;
+}
 body {
+    background-image: url("background.png");
 }
 
 main {
+    background-color: white;
+    position: relative;
+    left: 5%;
+    width: 90%;
 }
 header {
 }
@@ -52,6 +61,8 @@ section > div {
     font-family: "Comic Sans MS";
     text-transform: lowercase;
     padding: .7em 0;
+    width: 13em;
+    margin: auto;
 }
 section > div:nth-child(2n-1) {
 	/* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
@@ -66,7 +77,7 @@ section > div:nth-child(2n) {
 section > div:nth-child(3):after {
 	/* gave you the nth child after selector for free to inspire you */
 	/* generated content in here ... a property can do that */
-    content: " \2665 \2665 \2665"; /* adds three hearts after "loves" */
+    content: "\0200A\0200A\0200A\0200A\0200A\0200A\0200A\0200A \2665 \2665 \2665"; /* adds three hearts after "loves" */
 	}
 
 	/* some free rules for fun */
@@ -74,6 +85,7 @@ aside {
     background: rgb(255,63,63);
     color: white;
     border: 1rem solid black;
+    border-top-left-radius: 1rem;
     border-radius: 1rem 3rem 1rem 3rem;
     /* rem units are your friend use them often */
     font-family: sans-serif;
@@ -129,5 +141,21 @@ footer .wrapper span:after {
    be below 250 lines, the solution we had was
    below 200 easily formatted */
 section > h3{
-    text-shadow: 0 .03em .03em black; /* horiz vert blur color */
+    text-shadow: 0.01em .04em .03em black; /* horiz vert blur color */
 }
+section span{
+    font-size: 1.5em;
+}
+#zap{
+    width: 13em;
+    position: relative;
+    margin: auto;
+    box-shadow: 0 0 0 0.05em white inset;
+    border: 0.05em solid rgb(243,234,95);
+    border-radius: 2%;
+}
+#zap img{
+    height: 0.7em;
+    width: auto;
+}
+
