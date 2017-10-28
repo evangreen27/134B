@@ -45,18 +45,18 @@ section {
     display: -webkit-flex;
     -webkit-flex-direction: column-reverse;
     display: flex;
-    flex-direction: column-reverse; 
+    flex-direction: column-reverse;
 }
 section > div {
     /* font is 'Comic Sans MS, text is automatically adjusted to lowercase do not mod the HTML */
     font-family: "Comic Sans MS";
-    text-transform: lowercase; 
+    text-transform: lowercase;
     padding: .7em 0;
 }
 section > div:nth-child(2n-1) {
 	/* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
 	/* background color is  rgb(192,77,249) */
-    background-color: rgb(192,77,249);    
+    background-color: rgb(192,77,249);
 }
 section > div:nth-child(2n) {
 	/* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
@@ -68,21 +68,60 @@ section > div:nth-child(3):after {
 	/* generated content in here ... a property can do that */
     content: " \2665 \2665 \2665"; /* adds three hearts after "loves" */
 	}
-	
+
 	/* some free rules for fun */
 aside {
     background: rgb(255,63,63);
     color: white;
     border: 1rem solid black;
-    border-top-left-radius: 1rem;
+    border-radius: 1rem 3rem 1rem 3rem;
     /* rem units are your friend use them often */
-
     font-family: sans-serif;
-
-
+    font-size: 2rem;
     text-align: center;
 }
 
+svg {
+  fill: white;
+  width: 2rem;
+  height: 2rem;
+}
+
+footer {
+  background-color: rgb(250,85,193);
+  font-family: cursive;
+  text-align: center;
+}
+footer img {
+  width: 20%;
+}
+/*footer img:hover {
+  width: 20%;
+}*/
+
+footer .wrapper span {
+  display: none;
+  position: absolute;
+  right: 30%;
+  background: white;
+  border: 0.25rem solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+footer .wrapper span:after {
+	content: ‘’;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.625rem solid transparent;
+	border-right-color: black;
+	border-left: 0;
+	margin-top: -0.625rem;
+	margin-left: -0.625rem;
+}
 
 /* Oh no! The file has been truncated I guess you have to fill it in */
 
