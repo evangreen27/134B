@@ -9,6 +9,13 @@
 .logo{
     font-family: 'Monoton', cursive;
     color: black;
+    border-radius: 50%;
+    background-color: rgb(253,79,194);
+    padding: 0.3em 0.4em;
+    text-decoration: none;
+    position: relative;
+    bottom: 0.5em;
+    box-shadow: 0 0.07em 0.2em black;
 }
 .fun {
 font-family: 'Courier';
