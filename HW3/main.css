@@ -1,10 +1,30 @@
 /* Hint: use relative measurements you'll find them useful! */
 /* I may have removed a selector or two */
 
-@import url();  /* Set this for Monton a Google Font ...figure out their syntax */
+@import url('https://fonts.googleapis.com/css?family=Monoton');  /* Set this for Monton a Google Font ...figure out their syntax */
 
 * {
     box-sizing: border-box;
+}
+.logo{
+    font-family: 'Monoton', cursive;
+    color: black;
+    border-radius: 50%;
+    background-color: rgb(253,79,194);
+    padding: 0.3em 0.4em;
+    text-decoration: none;
+    position: relative;
+    bottom: 0.5em;
+    box-shadow: 0 0.07em 0.2em black;
+}
+.fun {
+font-family: 'Courier';
+font-style:normal;
+font-weight:300;
+color: white;
+text-shadow: 0 0 2px #ee0000;
+text-transform: uppercase;
+
 }
 
 body {
@@ -16,27 +36,37 @@ header {
 }
 section {
 	/* color rgb(243,234,95) is used */
+    background-color: rgb(243,234,95);
 
+    color: white; /* font color changed to white*/
+    text-align: center; /* text is centered */
+
+    /* reverse the order of "everybody loves using css" */
+    display: -webkit-flex;
+    -webkit-flex-direction: column-reverse;
+    display: flex;
+    flex-direction: column-reverse; 
 }
 section > div {
     /* font is 'Comic Sans MS, text is automatically adjusted to lowercase do not mod the HTML */
-    
-    
+    font-family: "Comic Sans MS";
+    text-transform: lowercase; 
+    padding: .7em 0;
 }
-section > aNastyNthChildSelectorToWrite {
+section > div:nth-child(2n-1) {
 	/* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
 	/* background color is  rgb(192,77,249) */
-	
-    
+    background-color: rgb(192,77,249);    
 }
-section > aNastyNthChildSelectorToWrite {
+section > div:nth-child(2n) {
 	/* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
     /* background color is  rgb(43,209,252) */
-
+    background-color:  rgb(43,209,252);
 }
 section > div:nth-child(3):after {
 	/* gave you the nth child after selector for free to inspire you */
 	/* generated content in here ... a property can do that */
+    content: " \2665 \2665 \2665"; /* adds three hearts after "loves" */
 	}
 	
 	/* some free rules for fun */
@@ -59,3 +89,6 @@ aside {
 /* Solution given should
    be below 250 lines, the solution we had was
    below 200 easily formatted */
+section > h3{
+    text-shadow: 0 .03em .03em black; /* horiz vert blur color */
+}
