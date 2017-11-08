@@ -1,0 +1,38 @@
+.login-page {
+  width: 360px;
+  padding: 5% 0 0;
+  margin: auto;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #76b852;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-logo img {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.form-field {
+}
+
+.form-button {
+  padding-top: 1rem;
+}
+
+.form-extra {
+}
+
+/* testing colors for color scheme
+#f2f2f2; greyish
+#4CAF50; green
+#EF3B3A; reddish
+#76b852; light gree
+*/
