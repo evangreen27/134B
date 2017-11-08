@@ -74,12 +74,14 @@
     float: left;
     font-size: x-large;
     font-weight: bold;
+    padding-left: 5px;
 }
 
 .rightside{
     float: right;
     font-size: x-large;
     font-weight: bold;
+    padding-right: 5px;
 }
 
 .navbarLi{

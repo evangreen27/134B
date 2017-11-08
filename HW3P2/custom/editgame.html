@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Score! - Edit Game</title>
+    </head>
+<body>
+    <div class="homepage">
+            <ul class = "navbarUl">
+              <li class = "navbarLi"><a href="home.html">Home</a></li>
+              <li class = "navbarLi"><a href="schedule.html">Schedule</a></li>
+              <li class = "navbarLi"><a href="roster.html">Roster</a></li>
+            </ul>
+
+            <section class="central">
+                <p>TODO: implement some way to choose which game to edit, needs to be able to see all games</p>
+            </section>
+
+            <div class="form">
+              <form action="#TODO" class="formstuff">
+
+                <h1>Edit Game!</h1>
+
+                <div class="form-field">
+                  <label><b>Opponent</b></label>
+                  <input type="text" placeholder="Team Name" name="Tname" required>
+                  <br />
+
+                  <label><b>Date</b></label>
+                  <input type="datetime-local" name="date" required>
+                  <br />
+
+                  <label><b>Location</b></label>
+                  <input type="text" placeholder="Quest Field, Tacoma" name="lname" required>
+                  <br />
+
+                  <label><b>Notes</b></label>
+                  <textarea id="notes" placeholder="Arrive 30 Minutes early for practice!" name="notes"></textarea>
+                  <br />
+                </div>
+
+                <div class="signup-type">
+                  <p>
+                    <b>Home or Away Game?</b>
+                  </p>
+                  <input type="radio" name="loc" value="Home" >Home<br>
+                  <input type="radio" name="loc" value="Away">Away<br>
+                </div>
+
+                <div class="form-button">
+                  <button type="submit">Submit</button>
+                </div>
+              </form>
+
+    </div>
+</body>
+</html>
