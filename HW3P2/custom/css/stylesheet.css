@@ -2,6 +2,9 @@
   font-family: sans-serif;
 }
 
+html{
+  background: #76b852;
+}
 
 .login-page {
   width: 100%;
@@ -156,14 +159,16 @@
 
 /* Below is CSS for anything */
 
-.min-width-200{ min-width: 200px; } /* for mobile */
+.min-width-250{ min-width: 250px; } /* for mobile */
+.width-250{width: 250px; }
 
 .width-25{ width: 25%; }
 .width-50{ width: 50%; }
 .width-75{ width: 75%; }
 .width-100{ width: 100%; }
 
-.fnt-xxs{ font-size: 0.5em; }
+.fnt-xxxs{ font-size: 0.4em; }
+.fnt-xxs{ font-size: 0.6em; }
 .fnt-xs{ font-size: 0.8em; }
 .fnt-sm{ font-size: 1em; }
 .fnt-md{ font-size: 1.2em; }
@@ -176,3 +181,4 @@
 .txt-right{ text-align: right; }
 
 .pd-sm{ padding: 1%; }
+.mg-sm{ margin: 1%; }
