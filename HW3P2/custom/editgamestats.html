@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Score! - Edit Game Stats</title>
+    </head>
+<body>
+  <div class="homepage">
+        <ul class = "navbarUl">
+          <li class = "navbarLi"><a href="home.html">Home</a></li>
+          <li class = "navbarLi"><a href="schedule.html">Schedule</a></li>
+          <li class = "navbarLi"><a href="roster.html">Roster</a></li>
+          <li class = "navbarLi"><a href="#">Manage</a></li>
+        </ul>
+
+        <div class="container">
+          <h1>Game Stats</h1>
+          <h2>Eagles vs Lions</h2>
+          <p>
+            <form class="progress">
+            W:
+            <input type="number" name="points" step="1" value="1">
+            -
+            <input type="number" name="points" step="1" value="3">
+            : L
+            </form>
+          </p>
+
+          <div class="progress">
+
+            <form>
+            <div class="progress-title">
+              <p>Foul</p>
+            </div>
+            <span>
+              <input type="number" name="points" step="1" value="1">
+              <progress value="2" max="5"></progress>
+              <input type="number" name="points" step="1" value="3">
+            </span>
+
+            <div class="progress-title">
+              <p>Red Card</p>
+            </div>
+            <span>
+              <input type="number" name="points" step="1" value="1">
+              <progress value="1" max="5"></progress>
+              <input type="number" name="points" step="1" value="4">
+            </span>
+
+            <div class="progress-title">
+              <p>Yellow Card</p>
+            </div>
+            <span>
+              <input type="number" name="points" step="1" value="2">
+              <progress value="2" max="5"></progress>
+              <input type="number" name="points" step="1" value="3">
+            </span>
+
+            <div class="progress-title">
+              <p>Shots on Goal</p>
+            </div>
+            <span>
+              <input type="number" name="points" step="1" value="3">
+              <progress value="3" max="5"></progress>
+              <input type="number" name="points" step="1" value="2">
+            </span>
+
+            <div class="progress-title">
+              <p>Goals</p>
+            </div>
+            <span>
+              <input type="number" name="points" step="1" value="1">
+              <progress value="1" max="5"></progress>
+              <input type="number" name="points" step="1" value="4">
+            </span>
+
+            <div class="progress-title">
+              <p>Corner Kicks</p>
+            </div>
+            <span>
+              <input type="number" name="points" step="1" value="2">
+              <progress value="2" max="5"></progress>
+              <input type="number" name="points" step="1" value="3">
+            </span>
+
+            <div class="progress-title">
+              <p>Goal Kicks</p>
+            </div>
+            <span>
+              <input type="number" name="points" step="1" value="2">
+              <progress value="2" max="5"></progress>
+              <input type="number" name="points" step="1" value="3">
+            </span>
+            </div>
+
+            </form>
+
+            <button type="submit">Save</button>
+          </div>
+    </div>
+</body>
+</html>

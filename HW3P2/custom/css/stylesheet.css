@@ -54,6 +54,11 @@
   margin: auto;
 }
 
+.progress input {
+  width: 2rem;
+  background: white;
+}
+
 .form-logo img {
   width: 100%;
   padding-bottom: 1rem;
