@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="css/stylesheet.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Score! - Add Player</title>
+  <title>Score! - Edit Player</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
   integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
@@ -32,8 +32,8 @@
     </nav>
 
     <br /><br /><br />
-    <h1 class="lead" style="text-align: center;">Add a Player!</h1>
-    <img src="img/user.png" width='100px' class="img-fluid mx-auto d-block" alt="Player Photo">
+    <h1 class="lead" style="text-align: center;">Edit Player!</h1>
+    <img src="img/kid.png" width='100px' class="img-fluid mx-auto d-block" alt="Player Photo">
     <form>
       <div class="form-group">
         <label for="photo"></label>
@@ -41,27 +41,27 @@
       </div>
       <div class="form-group">
         <label for="fname">First Name</label>
-        <input type="text" class="form-control" id="fname" placeholder="First Name">
+        <input type="text" class="form-control" id="fname" placeholder="First Name" value="John">
       </div>
       <div class="form-group">
         <label for="lname">Last Name</label>
-        <input type="text" class="form-control" id="lname" placeholder="Last Name">
+        <input type="text" class="form-control" id="lname" placeholder="Last Name" value="Doe">
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" placeholder="Email">
+        <input type="text" class="form-control" id="email" placeholder="Email" value="johndoe@gmail.com">
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob">
+        <input type="date" class="form-control" id="dob" value="2001-01-01">
       </div>
       <div class="form-group">
         <label for="jersey">Jersey Number</label>
-        <input type="int" class="form-control" id="jersey" placeholder="Jersey Number">
+        <input type="int" class="form-control" id="jersey" placeholder="Jersey Number" value="31">
       </div>
       <div class="form-group">
         <label for="position">Position</label>
-        <input type="text" class="form-control" id="position" placeholder="Position">
+        <input type="text" class="form-control" id="position" placeholder="Position" value="Goalie">
       </div>
       Designate Captain?
       <div class="form-check">
@@ -72,11 +72,12 @@
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="captain" id="ncaptain" value="no">
+          <input class="form-check-input" type="radio" name="captain" id="ncaptain" value="no" checked>
           No
         </label>
       </div>
-      <button type="submit" class="btn btn-primary">Add Player</button>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="reset" class="btn btn-danger">Delete</button>
     </form>
     <br /><br />
 
