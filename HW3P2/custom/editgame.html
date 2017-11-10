@@ -23,75 +23,76 @@
                 <h1>Edit a Game!</h1>
 
                 <div class="form-field">
-                    <label>"Please select which game you would like to edit"</label>
+                    <label>Please select which game you would like to edit</label><br /><br />
                     <label class="form-check-label">
                       <input class="form-check-input" type="radio" name="editedgame" id="g1" value="g1" checked>
-                      March 2, 2017 - TIGERS AT EAGLES
+                      March 2 - Tigers at Eagles
                     </label>
                   </div>
                   <div class="form-check">
                     <label class="form-check-label">
                       <input class="form-check-input" type="radio" name="editedgame" id="g2" value="g2">
-                      March 9, 2017 - TIGERS AT SHARKS
+                      March 4 - Tigers at Rhinos
                     </label>
-                  </div>    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="editedgame" id="g3" value="g3" checked>
-                        March 21, 2017 - LIONS AT TIGERS
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="editedgame" id="g4" value="g4">
-                        March 23, 2017 - DOVES AT TIGERS
-                      </label>
-                    </div>
-                    <br />
-                  <label><b>Opponent</b></label><br />
-                  <input type="text" placeholder="Team Name" name="Tname" required>
-                  <br /><br />
-
-                  <label><b>Date</b></label><br />
-                  <input type="datetime-local" name="date" required>
-                  <br /><br />
-
-                  <label><b>Location</b></label><br />
-                  <input type="text" placeholder="Qwest Field, Seattle" name="lname">
-                  <br /><br />
-
-                  <label><b>Notes</b></label><br />
-                  <textarea id="notes" placeholder="Arrive 30 Minutes early for practice!" name="notes"></textarea>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="editedgame" id="g3" value="g3">
+                      February 23 - Tigers at Hawks
+                    </label>
+                  </div>    
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="editedgame" id="g4" value="g4" checked>
+                      February 25 - Lions at Tigers
+                    </label>
+                  </div>
                   <br />
+                <label><b>Opponent</b></label><br />
+                <input type="text" placeholder="Team Name" name="Tname" value="Lions" required>
+                <br /><br />
 
-                <div class="signup-type">
-                  <p>
-                    <b>Home or Away Game?</b>
-                  </p>
-                  <input type="radio" name="loc" value="Home" >Home<br>
-                  <input type="radio" name="loc" value="Away">Away<br>
-                </div>
+                <label><b>Date</b></label><br />
+                <input type="datetime-local" name="date" value="2017-02-25T16:00" required>
+                <br /><br />
 
+                <label><b>Location</b></label><br />
+                <input type="text" placeholder="Qwest Field, Seattle" name="lname" value="Doyle Community Park">
+                <br /><br />
+
+                <label><b>Notes</b></label><br />
+                <textarea id="notes" placeholder="Arrive 30 Minutes early for practice!" name="notes"></textarea>
                 <br />
-                <div class="form-group">
-                  <label for="scoreHome">Your Team's Score (If already played)</label><br />
-                  <input type="number" class="form-control" id="scoreHome" placeholder="Score (number)">
-                </div>
-                <br />
-                <div class="form-group">
-                  <label for="scoreOppo">Opponent's Score (If already played)</label><br />
-                  <input type="number" class="form-control" id="scoreOppo" placeholder="Score (number)">
-                </div>
 
-                <div class="form-button">
-                  <button class="btn" type="submit">Submit</button>
-                </div>
-
-                <p>Because every page we host needs to have a link to the HTML validator
-             showing the current syntax state of the page, you can find the link to
-             the validator to this page here:
-             <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fcse134bejj.firebaseapp.com%2FHW3P2%2Fcustom%2Feditgame.html">Validate this page!</a></p>
-              </form>
+              <div class="signup-type">
+                <p>
+                  <b>Home or Away Game?</b>
+                </p>
+                <input type="radio" name="loc" value="Home" checked>Home<br>
+                <input type="radio" name="loc" value="Away">Away<br>
               </div>
+
+              <br />
+              <div class="form-group">
+                <label for="scoreHome">Your Team's Score (If already played)</label><br />
+                <input type="number" class="form-control" id="scoreHome" placeholder="Score (number)" value="3">
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="scoreOppo">Opponent's Score (If already played)</label><br />
+                <input type="number" class="form-control" id="scoreOppo" placeholder="Score (number)" value="1">
+              </div>
+
+              <div class="form-button">
+                <button class="btn" type="submit">Submit</button>
+              </div>
+
+              <p>Because every page we host needs to have a link to the HTML validator
+           showing the current syntax state of the page, you can find the link to
+           the validator to this page here:
+           <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fcse134bejj.firebaseapp.com%2FHW3P2%2Fcustom%2Feditgame.html">Validate this page!</a></p>
+            </form>
+            </div>
 
     </div>
 </body>
