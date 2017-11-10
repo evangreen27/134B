@@ -3,7 +3,7 @@
 }
 
 html{
-  background: #76b852;
+  background: white;
 }
 
 .login-page {
@@ -13,13 +13,13 @@ html{
 }
 
 .homepage {
-    background: #76b852;
+    background: white;
 }
 
 .form {
   position: relative;
   z-index: 1;
-  background: #76b852;
+  background: white;
   max-width: 100%;
   margin: 0 auto 100px;
   padding: 45px;
@@ -30,7 +30,7 @@ html{
 .container {
   position: relative;
   z-index: 1;
-  background: #76b852;
+  background: white;
   max-width: 100%;
   margin: 0 auto 100px;
   padding: 45px;
@@ -130,7 +130,7 @@ html{
     padding: 0;
     overflow: hidden;
     border: 1px solid #e7e7e7;
-    background-color: #161;
+    background-color: #76b852;
     width:50%;
     display:inline-table;
 }
@@ -187,7 +187,7 @@ html{
   padding: 5px;
 }
 .teamstats th{
-  background-color: #161;
+  background-color: #76b852;
 }
 .teamstats td{
   background-color: white;
