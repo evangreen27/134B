@@ -19,19 +19,19 @@
                 <h1>Add a Game!</h1>
 
                 <div class="form-field">
-                  <label><b>Opponent</b></label>
+                  <label><b>Opponent</b></label><br />
                   <input type="text" placeholder="Team Name" name="Tname" required>
-                  <br />
+                  <br /><br />
 
-                  <label><b>Date</b></label>
+                  <label><b>Date</b></label><br />
                   <input type="datetime-local" name="date" required>
-                  <br />
+                  <br /><br />
 
-                  <label><b>Location</b></label>
+                  <label><b>Location</b></label><br />
                   <input type="text" placeholder="Qwest Field, Seattle" name="lname" required>
-                  <br />
+                  <br /><br />
 
-                  <label><b>Notes</b></label>
+                  <label><b>Notes</b></label><br />
                   <textarea id="notes" placeholder="Arrive 30 Minutes early for practice!" name="notes"></textarea>
                   <br />
                 </div>
@@ -45,16 +45,17 @@
                 </div>
                 <br />
                 <div class="form-group">
-                  <label for="score">Score- Your Team (If already played)</label>
+                  <label for="score">Your Team's Score (If already played)</label><br />
                   <input type="int" class="form-control" id="score" placeholder="Score (number)" required='false'>
                 </div>
+                <br />
                 <div class="form-group">
-                  <label for="score">Score- Opponent (If already played)</label>
+                  <label for="score">Opponent's Score (If already played)</label><br />
                   <input type="int" class="form-control" id="score" placeholder="Score (number)" required='false'>
                 </div>
 
                 <div class="form-button">
-                  <button type="submit">Submit</button>
+                  <button class="btn" type="submit">Submit</button>
                 </div>
               </form>
 
