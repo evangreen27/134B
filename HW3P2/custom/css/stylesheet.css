@@ -95,7 +95,7 @@ html{
 .head-selector select{
   width: 250px;
   padding: 1%;
-  font-size: 2em;
+  font-size: 1.8em;
   border-radius: 5px;
   background-color: black;
   color: white;
@@ -162,11 +162,35 @@ html{
   margin: auto;
 }
 
+.teamstats{
+  overflow-x: auto;
+}
+.teamstats table{
+  width: 90%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.teamstats th,td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  vertical-align: bottom;
+  padding: 5px;
+}
+.teamstats th{
+  background-color: #161;
+}
+.teamstats td{
+  background-color: white;
+}
+.teamstats th:nth-child(2){
+  width: 150px;
+}
+
 /* testing colors for color scheme
 #f2f2f2; greyish
 #4CAF50; green
 #EF3B3A; reddish
-#76b852; light gree
+#76b852; light green
 */
 
 /* Below is CSS for anything */
