@@ -54,6 +54,7 @@ html{
   width: 200px;
   border-radius: 5px;
   padding: 5px;
+  margin: 5px;
 }
 
 .progress span {
