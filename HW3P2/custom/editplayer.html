@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Score! - Edit Player</title>
+    </head>
+<body>
+    <div class="homepage">
+            <ul class = "navbarUl">
+              <li class = "navbarLi"><a href="home.html">Home</a></li>
+              <li class = "navbarLi"><a href="schedule.html">Schedule</a></li>
+              <li class = "navbarLi"><a href="roster.html">Roster</a></li>
+              <li class = "navbarLi"><a href="#">Manage</a></li>
+            </ul>
+
+            <div class="container">
+
+              <form action="#TODO" class="formstuff">
+
+                <h1>Editing Player</h1>
+
+                <div class="pic-upload">
+                  <img src="img/kid.png"/><br />
+                  <button type="submit">Update photo</button>
+                </div>
+                <br />
+
+                <div class="form-field">
+                  <label><b>First Name</b></label>
+                  <input type="text" value="John" name="fname" required>
+                  <br />
+                  <label><b>Last Name</b></label>
+                  <input type="text" value="Doe" name="lname" required>
+                  <br />
+                  <label><b>Email</b></label>
+                  <input type="text" value="johndoe@gmail.com" name="email" required>
+                  <br />
+                  <label><b>Date of Birth</b></label>
+                  <input type="text" value="Jan 1, 2001" name="dob" required>
+                  <br />
+                  <label><b>Jersey Number</b></label>
+                  <input type="text" value="#31" name="jnum" required>
+                  <br />
+                  <label><b>Position</b></label>
+                  <input type="text" value="Goalie" name="pos" required>
+                  <br />
+                </div>
+
+                <div class="signup-type">
+                  <p>
+                    <b>Designate Captain?</b>
+                  </p>
+                  <input type="radio" name="captain" value="yesCap">Yes<br>
+                  <input type="radio" name="captain" value="noCap" checked="checked">No<br>
+                </div>
+
+                <div class="form-button">
+                  <button type="submit">Save</button>
+                  <button type="submit">Delete</button>
+                </div>
+              </form>
+          </div>
+    </div>
+</body>
+</html>

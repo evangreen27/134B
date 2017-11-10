@@ -1,3 +1,8 @@
+*{
+  font-family: sans-serif;
+}
+
+
 .login-page {
   width: 100%;
   padding: 5% 0 0;
@@ -17,6 +22,36 @@
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  background: #76b852;
+  max-width: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.container table {
+  margin: auto;
+}
+
+.container img {
+  width: 100px;
+  margin: auto;
+}
+
+.progress span {
+  display: block;
+  margin: auto;
+}
+
+.progress-title p {
+  display: block;
+  margin: auto;
 }
 
 .form-logo img {
@@ -42,7 +77,7 @@
 
 .heading{
     text-align: center;
-    font-size: xx-large;
+    font-size: 2em;
     font-weight: bolder;
 }
 
@@ -72,14 +107,14 @@
 
 .leftside{
     float: left;
-    font-size: x-large;
+    font-size: 1.5em;
     font-weight: bold;
     padding-left: 5px;
 }
 
 .rightside{
     float: right;
-    font-size: x-large;
+    font-size: 1.5em;
     font-weight: bold;
     padding-right: 5px;
 }
@@ -102,6 +137,10 @@
     background-color: #333;
 }
 
+.pic-upload img {
+  width: 100px;
+  margin: auto;
+}
 
 /* testing colors for color scheme
 #f2f2f2; greyish
@@ -109,3 +148,26 @@
 #EF3B3A; reddish
 #76b852; light gree
 */
+
+/* Below is CSS for anything */
+
+.min-width-200{ min-width: 200px; } /* for mobile */
+
+.width-25{ width: 25%; }
+.width-50{ width: 50%; }
+.width-75{ width: 75%; }
+.width-100{ width: 100%; }
+
+.fnt-xxs{ font-size: 0.5em; }
+.fnt-xs{ font-size: 0.8em; }
+.fnt-sm{ font-size: 1em; }
+.fnt-md{ font-size: 1.2em; }
+.fnt-lg{ font-size: 1.4em; }
+.fnt-xl{ font-size: 1.5em; }
+.fnt-xxl{ font-size: 2em; }
+
+.txt-left{ text-align: left; }
+.txt-cntr{ text-align: center; }
+.txt-right{ text-align: right; }
+
+.pd-sm{ padding: 1%; }
