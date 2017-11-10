@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="css/stylesheet.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta  charset="utf-8">
 	<title>Score! - Homepage</title>
     </head>
 <body>
@@ -28,7 +29,7 @@
                   <br /><br />
 
                   <label><b>Location</b></label><br />
-                  <input type="text" placeholder="Qwest Field, Seattle" name="lname" required>
+                  <input type="text" placeholder="Qwest Field, Seattle" name="lname">
                   <br /><br />
 
                   <label><b>Notes</b></label><br />
@@ -45,13 +46,13 @@
                 </div>
                 <br />
                 <div class="form-group">
-                  <label for="score">Your Team's Score (If already played)</label><br />
-                  <input type="int" class="form-control" id="score" placeholder="Score (number)" required='false'>
+                  <label for="scoreHome">Your Team's Score (If already played)</label><br />
+                  <input type="number" class="form-control" id="scoreHome" placeholder="Score (number)">
                 </div>
                 <br />
                 <div class="form-group">
-                  <label for="score">Opponent's Score (If already played)</label><br />
-                  <input type="int" class="form-control" id="score" placeholder="Score (number)" required='false'>
+                  <label for="scoreOppo">Opponent's Score (If already played)</label><br />
+                  <input type="number" class="form-control" id="scoreOppo" placeholder="Score (number)">
                 </div>
 
                 <div class="form-button">
@@ -59,6 +60,11 @@
                 </div>
               </form>
 
+              <p>Because every page we host needs to have a link to the HTML validator
+           showing the current syntax state of the page, you can find the link to
+           the validator to this page here:
+           <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fcse134bejj.firebaseapp.com%2FHW3P2%2Fcustom%2Faddgame.html">Validate this page!</a></p>
+       </div>
     </div>
 </body>
 </html>
