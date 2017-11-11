@@ -10,3 +10,26 @@ form{
     width:50%;
     margin: 0 auto;
 }
+
+.container {
+  position: relative;
+  z-index: 1;
+  background: white;
+  max-width: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+
+.container table {
+  margin: auto;
+}
+
+.container img {
+  width: 100px;
+  margin: auto;
+}
+
+.central{
+    text-align: center;
+}
