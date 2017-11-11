@@ -29,12 +29,3 @@ form{
   width: 100px;
   margin: auto;
 }
-
-.central{
-    text-align: center;
-}
-
-.form-input-fields input {
-  width: 2rem;
-  background: white;
-}

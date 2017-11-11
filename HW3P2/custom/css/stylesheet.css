@@ -205,15 +205,6 @@ html{
   width: 150px;
 }
 
-/* testing colors for color scheme
-#f2f2f2; greyish
-#4CAF50; green
-#EF3B3A; reddish
-#76b852; light green
-*/
-
-/* Below is CSS for anything */
-
 .min-width-250{ min-width: 250px; } /* for mobile */
 .width-250{width: 250px; }
 
