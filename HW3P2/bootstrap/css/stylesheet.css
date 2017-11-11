@@ -33,3 +33,8 @@ form{
 .central{
     text-align: center;
 }
+
+.form-input-fields input {
+  width: 2rem;
+  background: white;
+}
