@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Android load time on slow 3g = 6.13s (with cache cleared) -->
+<!-- Android load time on NON-BOOTSTRAP with slow 3g = 4.32s (with cache cleared) -->
+
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score! - Roster</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+  integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="home-bs.html">Score!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home-bs.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="schedule-bs.html">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br /><br /><br />
+    <section class = "central">
+    <div class="head-selector">
+        <select>
+            <!-- TODO switch to stats when selected -->
+            <option value="roster" selected>Team Roster</option>
+            <option value="stats">Team Statistics</option>
+        </select>
+    </div>
+    <br />
+    <div class="card-group">
+      <div class="card">
+        <img class="card-img-top" src="img/kid2.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">#31 John Doe</h4>
+          <div class="fnt-xxs">Position: Goalie</div>
+          <div class="fnt-xxs">DOB: 01/01/2001</div>
+          <div class="fnt-xxs">Player ID: 62964</div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"></small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/kid3.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">#31 John Doe</h4>
+          <div class="fnt-xxs">Position: Goalie</div>
+          <div class="fnt-xxs">DOB: 01/01/2001</div>
+          <div class="fnt-xxs">Player ID: 62964</div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"></small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/kid4.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">#31 John Doe</h4>
+          <div class="fnt-xxs">Position: Goalie</div>
+          <div class="fnt-xxs">DOB: 01/01/2001</div>
+          <div class="fnt-xxs">Player ID: 62964</div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"></small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/kid.png" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">#31 John Doe</h4>
+          <div class="fnt-xxs">Position: Goalie</div>
+          <div class="fnt-xxs">DOB: 01/01/2001</div>
+          <div class="fnt-xxs">Player ID: 62964</div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"></small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/kid2.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">#31 John Doe</h4>
+          <div class="fnt-xxs">Position: Goalie</div>
+          <div class="fnt-xxs">DOB: 01/01/2001</div>
+          <div class="fnt-xxs">Player ID: 62964</div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"></small>
+        </div>
+      </div>
+    </div>
+    <div>
+        <button class="btn" onclick="location.href='addplayer-bs.html'">Add Player</button>
+    </div>
+    <br /><br />
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
