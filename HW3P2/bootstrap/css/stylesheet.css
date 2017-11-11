@@ -34,7 +34,7 @@ form{
     text-align: center;
 }
 
-input {
+.form-input-fields input {
   width: 2rem;
   background: white;
 }
