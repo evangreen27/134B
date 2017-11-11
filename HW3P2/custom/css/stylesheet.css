@@ -12,9 +12,9 @@ html{
 }
 
 .login-page {
-  width: 100%;
+  width: 75%;
   padding: 5% 0 0;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .homepage {
@@ -26,7 +26,7 @@ html{
   z-index: 1;
   background: white;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 100px;
   padding: 45px;
 }
 
@@ -79,9 +79,7 @@ html{
   padding-bottom: 1rem;
 }
 
-.form-field{
-  text-align: left;
-}
+
 
 .form-field label {
 }
