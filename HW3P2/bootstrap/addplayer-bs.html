@@ -38,11 +38,11 @@
 
     <br /><br /><br />
     <h1 class="lead" style="text-align: center;">Add a Player!</h1>
-    <img src="img/user.png" width='100px' class="img-fluid mx-auto d-block" alt="Player Photo">
-    <form>
+    <img src="" class="img-fluid mx-auto d-block" alt="" id="preview">
+    <form id="addplayerform" method = "POST" action = "">
       <div class="form-group">
         <label for="photo"></label>
-        <input type="file" class="form-control-file mx-auto" id="photo">
+        <input type="file" class="form-control-file mx-auto" id="photo" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
       </div>
       <div class="form-group">
         <label for="fname">First Name</label>
@@ -81,7 +81,7 @@
           No
         </label>
       </div>
-      <button type="submit" class="btn btn-primary">Add Player</button>
+      <button class="btn btn-primary" onclick = "setStorage();">Add Player</button>
     </form>
     <br /><br />
 
@@ -91,5 +91,46 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script  type="text/javascript">
+      function setStorage(){
+        console.log("setting");
+        var playerid = localStorage.getItem("playerid");
+        if (!playerid){
+          playerid = 0;
+        }
+        localStorage.setItem("playerid", parseInt(playerid)+1);
+
+        playerPhoto = document.getElementById("preview");
+        imgData = getBase64Image(playerPhoto);
+        localStorage.setItem("photo" + playerid, imgData);
+        var inputName= document.getElementById("fname");
+        localStorage.setItem("fname" + playerid, inputName.value);
+        var inputlName= document.getElementById("lname");
+        localStorage.setItem("lname" + playerid, inputlName.value);
+        var inputEmail= document.getElementById("email");
+        localStorage.setItem("email" + playerid, inputEmail.value);
+        var inputDob= document.getElementById("dob");
+        localStorage.setItem("dob" + playerid, inputDob.value);
+        var inputJersey= document.getElementById("jersey");
+        localStorage.setItem("jersey" + playerid, inputJersey.value);
+        var inputPosition= document.getElementById("position");
+        localStorage.setItem("position" + playerid, inputPosition.value);
+        var inputYcaptain= document.getElementById("ycaptain");
+        localStorage.setItem("ycaptain" + playerid, inputYcaptain.value);
+        var inputNcaptain= document.getElementById("ncaptain");
+        localStorage.setItem("ncaptain" + playerid, inputNcaptain.value);
+    }
+    function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+  
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    }
+    </script>
   </body>
 </html>

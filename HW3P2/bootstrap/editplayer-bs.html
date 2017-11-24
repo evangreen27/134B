@@ -38,7 +38,7 @@
 
     <br /><br /><br />
     <h1 class="lead" style="text-align: center;">Edit Player!</h1>
-    <img src="img/kid.png" width='100px' class="img-fluid mx-auto d-block" alt="Player Photo">
+    <img src="" class="img-fluid mx-auto d-block" alt="" id="previous">
     <form>
       <div class="form-group">
         <label for="photo"></label>
@@ -92,5 +92,49 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script  type="text/javascript">
+      function setStorage(){
+        console.log("setting");
+        var playerid =  parseInt(window.location.search.substring(1).split("=")[1]);
+
+        playerPhoto = document.getElementById("preview");
+        imgData = getBase64Image(playerPhoto);
+        localStorage.setItem("photo" + playerid, imgData);
+        var inputName= document.getElementById("fname");
+        localStorage.setItem("fname" + playerid, inputName.value);
+        var inputlName= document.getElementById("lname");
+        localStorage.setItem("lname" + playerid, inputlName.value);
+        var inputEmail= document.getElementById("email");
+        localStorage.setItem("email" + playerid, inputEmail.value);
+        var inputDob= document.getElementById("dob");
+        localStorage.setItem("dob" + playerid, inputDob.value);
+        var inputJersey= document.getElementById("jersey");
+        localStorage.setItem("jersey" + playerid, inputJersey.value);
+        var inputPosition= document.getElementById("position");
+        localStorage.setItem("position" + playerid, inputPosition.value);
+        var inputYcaptain= document.getElementById("ycaptain");
+        localStorage.setItem("ycaptain" + playerid, inputYcaptain.value);
+        var inputNcaptain= document.getElementById("ncaptain");
+        localStorage.setItem("ncaptain" + playerid, inputNcaptain.value);
+    }
+    function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+  
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    }
+    function setimage(){
+      var playerid =  parseInt(window.location.search.substring(1).split("=")[1]);
+      var dataImage = localStorage.getItem("photo" + playerid);
+      var previous = document.getElementById("previous");
+      previous.setAttribute("src", "data:image/png;base64," + dataImage);
+    }
+    $(window).ready(setimage);
+    </script>
   </body>
 </html>
