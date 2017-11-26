@@ -52,8 +52,7 @@
     <div class="container">
     <section class = "central">
     <div class="head-selector">
-        <select>
-            <!-- TODO switch to stats when selected -->
+        <select onclick="selectRoster(this.selectedIndex)">
             <option value="roster" selected>Team Roster</option>
             <option value="stats">Team Statistics</option>
         </select>
@@ -135,6 +134,12 @@
           parent.insertBefore(newPlayer, current);
     }
     $(window).ready(findID);
+    </script>
+    <script  type="text/javascript">
+      function selectRoster(i){
+        console.log("roster options selected");
+        if(i == 1) window.location.href="rosterstats-bs.html";
+      }
     </script>
     <script  type="text/javascript">
       function logout(){

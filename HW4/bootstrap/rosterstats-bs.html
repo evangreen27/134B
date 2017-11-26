@@ -51,10 +51,9 @@
     <br /><br /><br />
     <section class = "central">
     <div class="head-selector">
-        <select>
-            <!-- TODO switch to stats when selected -->
-            <option value="roster" selected>Team Roster</option>
-            <option value="stats">Team Statistics</option>
+        <select onclick="selectRoster(this.selectedIndex)">
+            <option value="roster">Team Roster</option>
+            <option value="stats" selected>Team Statistics</option>
         </select>
     </div>
     <br />
@@ -173,6 +172,12 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script  type="text/javascript">
+      function selectRoster(i){
+        console.log("roster options selected");
+        if(i == 0) window.location.href="roster-bs.html";
+      }
+    </script>
     <script  type="text/javascript">
       function logout(){
         console.log("logging out...");
