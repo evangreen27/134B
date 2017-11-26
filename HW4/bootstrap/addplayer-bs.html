@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<!-- file size = 79.2kb -->
+<!-- Android load time on slow 3g = 7.94s (with cache cleared) -->
+<!-- Android load time on NON-BOOTSTRAP with slow 3g = 4.77s (with cache cleared) -->
+
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score! - Add Player</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+  integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="home-bs.html">Score!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home-bs.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="schedule-bs.html">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br /><br /><br />
+    <h1 class="lead" style="text-align: center;">Add a Player!</h1>
+    <img src="" class="img-fluid mx-auto d-block" alt="" id="preview">
+    <form id="addplayerform" method = "POST" action = "">
+      <div class="form-group">
+        <label for="photo"></label>
+        <input type="file" class="form-control-file mx-auto" id="photo" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
+      </div>
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob">
+      </div>
+      <div class="form-group">
+        <label for="jersey">Jersey Number</label>
+        <input type="int" class="form-control" id="jersey" placeholder="Jersey Number">
+      </div>
+      <div class="form-group">
+        <label for="position">Position</label>
+        <input type="text" class="form-control" id="position" placeholder="Position">
+      </div>
+      Designate Captain?
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="captain" id="ycaptain" value="yes">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="captain" id="ncaptain" value="no">
+          No
+        </label>
+      </div>
+      <button class="btn btn-primary" onclick = "setStorage();">Add Player</button>
+    </form>
+    <br /><br />
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script  type="text/javascript">
+      function setStorage(){
+        console.log("setting");
+        var playerid = localStorage.getItem("playerid");
+        if (!playerid){
+          playerid = 0;
+        }
+        localStorage.setItem("playerid", parseInt(playerid)+1);
+
+        playerPhoto = document.getElementById("preview");
+        imgData = getBase64Image(playerPhoto);
+        localStorage.setItem("photo" + playerid, imgData);
+        var inputName= document.getElementById("fname");
+        localStorage.setItem("fname" + playerid, inputName.value);
+        var inputlName= document.getElementById("lname");
+        localStorage.setItem("lname" + playerid, inputlName.value);
+        var inputEmail= document.getElementById("email");
+        localStorage.setItem("email" + playerid, inputEmail.value);
+        var inputDob= document.getElementById("dob");
+        localStorage.setItem("dob" + playerid, inputDob.value);
+        var inputJersey= document.getElementById("jersey");
+        localStorage.setItem("jersey" + playerid, inputJersey.value);
+        var inputPosition= document.getElementById("position");
+        localStorage.setItem("position" + playerid, inputPosition.value);
+        var inputYcaptain= document.getElementById("ycaptain");
+        localStorage.setItem("ycaptain" + playerid, inputYcaptain.value);
+        var inputNcaptain= document.getElementById("ncaptain");
+        localStorage.setItem("ncaptain" + playerid, inputNcaptain.value);
+    }
+    function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+  
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    }
+    </script>
+  </body>
+</html>
