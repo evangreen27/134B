@@ -11,6 +11,16 @@
   <title>Score! - Edit Player</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
   integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    console.log("authenticating");
+
+    // Get username to check if exists (logged in)
+    var user = localStorage.getItem("user");
+    if (user == null) {
+      window.location.replace("login-bs.html");
+    }
+  </script>
 </head>
 
   <body>
@@ -31,6 +41,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login-bs.html" onclick="logout()">Logout</a>
           </li>
         </ul>
       </div>
@@ -119,7 +132,7 @@
     }
     function getBase64Image(img) {
     var canvas = document.createElement("canvas");
-  
+
     canvas.width = img.width;
     canvas.height = img.height;
     var ctx = canvas.getContext("2d");
@@ -135,6 +148,14 @@
       previous.setAttribute("src", "data:image/png;base64," + dataImage);
     }
     $(window).ready(setimage);
+    </script>
+    <script  type="text/javascript">
+      function logout(){
+        console.log("logging out...");
+
+        // Gets the username entered by the user, then sets local storage
+        localStorage.removeItem("user");
+      }
     </script>
   </body>
 </html>

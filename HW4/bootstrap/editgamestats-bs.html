@@ -11,6 +11,16 @@
   <title>Score! - Edit Game Stats</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
   integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    console.log("authenticating");
+
+    // Get username to check if exists (logged in)
+    var user = localStorage.getItem("user");
+    if (user == null) {
+      window.location.replace("login-bs.html");
+    }
+  </script>
 </head>
 
   <body>
@@ -31,6 +41,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login-bs.html" onclick="logout()">Logout</a>
           </li>
         </ul>
       </div>
@@ -109,5 +122,13 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script  type="text/javascript">
+      function logout(){
+        console.log("logging out...");
+
+        // Gets the username entered by the user, then sets local storage
+        localStorage.removeItem("user");
+      }
+    </script>
   </body>
 </html>
