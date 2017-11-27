@@ -51,51 +51,51 @@
 
     <br /><br /><br />
     <h1 class="lead" style="text-align: center;">Edit Player!</h1>
-    <img src="" class="img-fluid mx-auto d-block" alt="" id="previous">
-    <form>
+    <img src="" class="img-fluid mx-auto d-block" alt="" id="preview">
+    <form  id="editplayerform" method = "POST" action = "">
       <div class="form-group">
         <label for="photo"></label>
-        <input type="file" class="form-control-file mx-auto" id="photo">
+        <input type="file" class="form-control-file mx-auto" id="photo" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
       </div>
       <div class="form-group">
         <label for="fname">First Name</label>
-        <input type="text" class="form-control" id="fname" placeholder="First Name" value="John">
+        <input type="text" class="form-control" id="fname" placeholder="First Name">
       </div>
       <div class="form-group">
         <label for="lname">Last Name</label>
-        <input type="text" class="form-control" id="lname" placeholder="Last Name" value="Doe">
+        <input type="text" class="form-control" id="lname" placeholder="Last Name">
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" placeholder="Email" value="johndoe@gmail.com">
+        <input type="text" class="form-control" id="email" placeholder="Email">
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" value="2001-01-01">
+        <input type="date" class="form-control" id="dob">
       </div>
       <div class="form-group">
         <label for="jersey">Jersey Number</label>
-        <input type="int" class="form-control" id="jersey" placeholder="Jersey Number" value="31">
+        <input type="int" class="form-control" id="jersey" placeholder="Jersey Number">
       </div>
       <div class="form-group">
         <label for="position">Position</label>
-        <input type="text" class="form-control" id="position" placeholder="Position" value="Goalie">
+        <input type="text" class="form-control" id="position" placeholder="Position">
       </div>
       Designate Captain?
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="captain" id="ycaptain" value="yes">
+          <input class="form-check-input" type="radio" name="captain" id="ycaptain">
           Yes
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="captain" id="ncaptain" value="no" checked>
+          <input class="form-check-input" type="radio" name="captain" id="ncaptain">
           No
         </label>
       </div>
-      <button type="submit" class="btn btn-primary">Save</button>
-      <button type="reset" class="btn btn-danger">Delete</button>
+      <button class="btn btn-primary" id="savebtn">Save</button>
+      <button type="button" class="btn btn-secondary" onclick = "deletePlayer();">Delete</button>
     </form>
     <br /><br />
 
@@ -106,7 +106,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script  type="text/javascript">
-      function setStorage(){
+       $('#editplayerform').submit(function() {
         console.log("setting");
         var playerid =  parseInt(window.location.search.substring(1).split("=")[1]);
 
@@ -129,7 +129,7 @@
         localStorage.setItem("ycaptain" + playerid, inputYcaptain.value);
         var inputNcaptain= document.getElementById("ncaptain");
         localStorage.setItem("ncaptain" + playerid, inputNcaptain.value);
-    }
+    });
     function getBase64Image(img) {
     var canvas = document.createElement("canvas");
 
@@ -144,8 +144,27 @@
     function setimage(){
       var playerid =  parseInt(window.location.search.substring(1).split("=")[1]);
       var dataImage = localStorage.getItem("photo" + playerid);
+      var previous = document.getElementById("preview");
+      preview.setAttribute("src", "data:image/png;base64," + dataImage);
+      document.getElementById("fname").setAttribute("value", localStorage.getItem("fname" + playerid));
+      document.getElementById("lname").setAttribute("value", localStorage.getItem("lname" + playerid));
+      document.getElementById("email").setAttribute("value", localStorage.getItem("email" + playerid));
+      document.getElementById("dob").setAttribute("value", localStorage.getItem("dob" + playerid));
+      document.getElementById("jersey").setAttribute("value", localStorage.getItem("jersey" + playerid));
+      document.getElementById("position").setAttribute("value", localStorage.getItem("position" + playerid));
+      document.getElementById("ycaptain").setAttribute("value", localStorage.getItem("ycaptain" + playerid));
+      document.getElementById("ycaptain").setAttribute("value", localStorage.getItem("ycaptain" + playerid));
+      var toparse = 'viewplayer-bs.html?id='+ playerid;
+      document.getElementById("editplayerform").setAttribute('action',toparse);
+    }
+    function deletePlayer(){
+      document.getElementById("editplayerform").setAttribute('action','roster-bs.html');
+      var playerid =  parseInt(window.location.search.substring(1).split("=")[1]);
+      localStorage.setItem("fname" + playerid, "0");
+      var dataImage = localStorage.getItem("photo" + playerid);
       var previous = document.getElementById("previous");
       previous.setAttribute("src", "data:image/png;base64," + dataImage);
+      window.location.href="roster-bs.html";
     }
     $(window).ready(setimage);
     </script>

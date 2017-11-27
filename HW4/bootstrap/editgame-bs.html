@@ -51,70 +51,27 @@
 
     <br /><br /><br />
     <h1 class="lead" style="text-align: center;">Edit a Game!</h1>
-<form>
-    <label for="editedgame">Please select which game you would like to edit</label>
-    <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="editedgame" id="g1" value="g1" checked>
-      March 2, 2017 - TIGERS AT EAGLES
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="editedgame" id="g2" value="g2">
-      March 9, 2017 - TIGERS AT SHARKS
-    </label>
-  </div>    <div class="form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="radio" name="editedgame" id="g3" value="g3" checked>
-        March 21, 2017 - LIONS AT TIGERS
-      </label>
-    </div>
-    <div class="form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="radio" name="editedgame" id="g4" value="g4">
-        March 23, 2017 - DOVES AT TIGERS
-      </label>
-    </div>
 
-  <div class="form-group">
-    <label for="opponent">Opponent</label>
-    <input type="text" class="form-control" id="opponent" placeholder="Team Name">
-  </div>
-  <div class="form-group">
-    <label for="dateT">Date and Time</label>
-    <input type="datetime-local" class="form-control" id="dateT">
-  </div>
-  <div class="form-group">
-    <label for="location">Location</label>
-    <input type="text" class="form-control" id="location" placeholder="Qwest Field, Seattle">
-  </div>
-  <div class="form-group">
-    <label for="notes">Notes</label>
-    <textarea class="form-control" id="notes" rows="3" placeholder="Arrive 30 minutes early for practice!"></textarea>
-  </div>
-  <div class="form-check">
-  <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="homeOrAway" id="home" value="Home" checked>
-    Home Game
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="homeOrAway" id="away" value="Away">
-    Away Game
-  </label>
-</div>
-<div class="form-group">
-  <label for="score">Score- Your Team (If already played)</label>
-  <input type="int" class="form-control" id="score" placeholder="Score (number)" required='false'>
-</div>
-<div class="form-group">
-  <label for="score">Score- Opponent (If already played)</label>
-  <input type="int" class="form-control" id="score" placeholder="Score (number)" required='false'>
-</div>
-<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <form id="editgameform" method = "POST" action = "schedule-bs.html" onsubmit="setGame();">
+    <div class="form-group">
+        <label for="ownteam">Your Team Name</label>
+        <input type="text" class="form-control" id="ownteam" placeholder="Team Name">
+      </div>
+    <div class="form-group">
+      <label for="opponent">Opponent</label>
+      <input type="text" class="form-control" id="opponent" placeholder="Team Name">
+    </div>
+    <div class="form-group">
+      <label for="dateT">Date and Time</label>
+      <input type="datetime-local" class="form-control" id="dateT">
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" id="location" placeholder="Qwest Field, Seattle">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class = "btn btn-primary" onclick="deleteGame();">Delete</button>
+  </form>
 
 
     <!-- Bootstrap core JavaScript
@@ -123,12 +80,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script  type="text/javascript">
+     $('#editgameform').submit(function() {
+        console.log("setting");
+        var gameid =  parseInt(window.location.search.substring(1).split("=")[1]);;
+
+        inputOwnteam = document.getElementById("ownteam");
+        localStorage.setItem("ownteam" + gameid, inputOwnteam.value);
+        var inputOpp= document.getElementById("opponent");
+        localStorage.setItem("opponent" + gameid, inputOpp.value);
+        var inputDateT= document.getElementById("dateT");
+        localStorage.setItem("dateT" + gameid, inputDateT.value);
+        var inputLoc= document.getElementById("location");
+        localStorage.setItem("location" + gameid, inputLoc.value);
+
+      });
+      function setVals(){
+        var gameid =  parseInt(window.location.search.substring(1).split("=")[1]);
+
+        document.getElementById("ownteam").setAttribute("value", localStorage.getItem("ownteam" + gameid));
+        document.getElementById("opponent").setAttribute("value", localStorage.getItem("opponent" + gameid));
+        document.getElementById("dateT").setAttribute("value", localStorage.getItem("dateT" + gameid));
+        document.getElementById("location").setAttribute("value", localStorage.getItem("location" + gameid));
+      }
+      function deleteGame(){
+        var gameid =  parseInt(window.location.search.substring(1).split("=")[1]);
+        localStorage.setItem("ownteam" + gameid, "0");
+        window.location.href="schedule-bs.html";
+      }
       function logout(){
         console.log("logging out...");
 
         // Gets the username entered by the user, then sets local storage
         localStorage.removeItem("user");
       }
+      $(window).ready(setVals);
     </script>
   </body>
 </html>
