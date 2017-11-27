@@ -235,11 +235,12 @@
         console.log("setting");
         var playerid = localStorage.getItem("playerid");
         if (playerid){
-            /***********************TODO replace code below**************************/
+            /***********************TODOTODOTODOTODO**************************/
             for (i=0; i<playerid; i++){
                 var inputFoul= document.getElementById("foul"+i);
-                //if(!inputFoul) inputFoul = 0;
-                localStorage.setItem("foul"+i, inputFoul.value);
+                if(!inputFoul) inputFoul = 0;
+                else inputFoul = inputFoul.value;
+                localStorage.setItem("foul"+i, inputFoul);
                 //TODO add the rest
             }
         }
