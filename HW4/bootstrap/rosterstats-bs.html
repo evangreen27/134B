@@ -97,6 +97,7 @@
         var i;
         var playerid= localStorage.getItem("playerid");
         for (i=0; i<playerid; i++){
+          if(localStorage.getItem("fname" + i) != "0")
           loadPlayers(i);
         }
       }
