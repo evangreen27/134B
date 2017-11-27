@@ -49,30 +49,21 @@
       </div>
     </nav>
 
-    <main role="main" class="container">
+    <main role="main" class="container" id="mainparent">
         <br /><br /><br />
         <div class="jumbotron">
                <div class="container">
-                 <h1 class="display-3"><b>TEAM EJJ</b></h1>
+                 <h1 class="display-3"><b id="teambold"></b></h1>
                  <br />
-                 <p class="lead">Wins: 1</p>
-                 <p class="lead">Losses: 1</p>
-                 <p class="lead">Ties: 0</p>
+                 <p class="lead">Wins: </p>
+                 <p class="lead">Losses: </p>
+                 <p class="lead">Ties: </p>
                </div>
-             </div>
+        </div>
              <p>Upcoming Match</p>
-             <div class="row">
-                 <div class="col-4">Thursday, March 2</div>
-                 <div class="col-4"></div>
-                 <div class="col-4">TIGERS AT EAGLES</div>
-             </div>
+
+             <div id="final"></div>
              <br />
-             <p>Recent Match</p>
-             <div class="row">
-                 <div class="col-4" style="background-color: rgba(40,200,40,.15);">Thursday, February 23</div>
-                 <div class="col-4" style="background-color: rgba(40,200,40,.15);">4-9</div>
-                 <div class="col-4" style="background-color: rgba(40,200,40,.15);">TIGERS AT RHINOS</div>
-             </div>
     </main>
 
 
@@ -82,12 +73,58 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script  type="text/javascript">
+      function init(){
+        document.getElementById("teambold").appendChild(document.createTextNode(localStorage.getItem("user").charAt(0).toUpperCase() + localStorage.getItem("user").slice(1)));
+
+        var gameid = localStorage.getItem("gameid")
+        if(gameid){
+          var i = parseInt(gameid) - 1; //gets the most recent game
+          //skips over deleted or finished games
+          while (localStorage.getItem("ownteam" + i) == "0"){
+            i--;
+          }
+          if(i >= 0){
+            var newGame = document.createElement("div");
+            newGame.setAttribute('class','row');
+            var inputOwnteam= localStorage.getItem("ownteam"+i);
+            var inputOpp= localStorage.getItem("opponent"+i);
+            var inputDateT= localStorage.getItem("dateT"+i);
+            var inputLoc= localStorage.getItem("location"+i);
+            var col1 = document.createElement("div");
+            col1.setAttribute('class','col-4');
+            var col2 = document.createElement("div");
+            col2.setAttribute('class','col-4');
+            var col3 = document.createElement("div");
+            col3.setAttribute('class','col-4');
+
+            var toparse = 'editgame-bs.html?id='+ i;
+            newGame.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
+            newGame.setAttribute("style","cursor:pointer");
+
+            var content1 = document.createTextNode(inputDateT.replace("T", " "));
+            col1.appendChild(content1);
+            var content2 = document.createTextNode(inputOwnteam + " VS " + inputOpp);
+            col2.appendChild(content2);
+            var content3 = document.createTextNode(inputLoc);
+            col3.appendChild(content3);
+            newGame.appendChild(col1);
+            newGame.appendChild(col2);
+            newGame.appendChild(col3);
+
+            var current = document.getElementById("final");
+            var parent = document.getElementById("mainparent");
+            current.appendChild(newGame);
+            parent.insertBefore(newGame, current);
+          }
+        }
+      }
       function logout(){
         console.log("logging out...");
 
         // Gets the username entered by the user, then sets local storage
         localStorage.removeItem("user");
       }
+      $(window).ready(init)
     </script>
   </body>
 

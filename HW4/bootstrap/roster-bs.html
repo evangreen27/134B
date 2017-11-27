@@ -80,7 +80,10 @@
         var i;
         var playerid= localStorage.getItem("playerid");
         for (i=0; i<playerid; i++){
-          loadPlayers(i);
+          //check if the player has been deleted, if their name is "0" then they have been.
+          if(localStorage.getItem("fname"+i) != "0"){
+           loadPlayers(i);
+          }
         }
       }
       function loadPlayers(i){
@@ -105,7 +108,6 @@
           photo.setAttribute('style',"display: flex;");
           //the following code determines which player to view when its div is clicked
           var toparse = 'viewplayer-bs.html?id='+ i;
-          console.log(toparse);
           newPlayer.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
           newPlayer.setAttribute("style","cursor:pointer");
           //TODO: insert code for checking file size on server?
