@@ -58,7 +58,7 @@
     </div>
     <br />
     <div style="overflow-x: auto;">
-        <table class="table" style="width: 90%; margin: 0px auto;">
+        <table id="final" class="table" style="width: 90%; margin: 0px auto;">
             <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -73,90 +73,7 @@
                 <th>Throw Ins</th>
                 <th>Appearances</th>
             </tr>
-            <tr>
-                <td contenteditable="false">31</td>
-                <td contenteditable="false">John Doe</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-            </tr>
-            <tr>
-                <td contenteditable="false">31</td>
-                <td contenteditable="false">John Doe</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-            </tr>
-            <tr>
-                <td contenteditable="false">31</td>
-                <td contenteditable="false">John Doe</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-            </tr>
-            <tr>
-                <td contenteditable="false">31</td>
-                <td contenteditable="false">John Doe</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-            </tr>
-            <tr>
-                <td contenteditable="false">31</td>
-                <td contenteditable="false">John Doe</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-            </tr>
-            <tr>
-                <td contenteditable="false">31</td>
-                <td contenteditable="false">John Doe</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-                <td contenteditable="false">0</td>
-            </tr>
+            <!--JS (below) used to fill out table-->
         </table>
     </div>
     <br><br>
@@ -171,6 +88,92 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      function findID(){
+        console.log("finding IDs");
+        var i;
+        var playerid= localStorage.getItem("playerid");
+        for (i=0; i<playerid; i++){
+          loadPlayers(i);
+        }
+      }
+      function loadPlayers(i){
+        var newPlayer = document.createElement("tr"); //creates new row for each player
+
+        /* Gets jersey number */
+        var newJersey = document.createElement("td");
+        newJersey.setAttribute('contenteditable','false');
+        var inputJersey= localStorage.getItem("jersey"+i);
+        newJersey.appendChild(document.createTextNode("#" + inputJersey));
+        newPlayer.appendChild(newJersey);
+
+        /* Gets name */
+        var newName = document.createElement("td");
+        newName.setAttribute('contenteditable','false');
+        var inputName= localStorage.getItem("fname"+i);
+        var inputlName= localStorage.getItem("lname"+i);
+        newName.appendChild(document.createTextNode(inputName + " " + inputlName));
+        newPlayer.appendChild(newName);
+
+        /*******************************TODO: grab actual data***************************************/
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /* Creates number */
+        var newFoul = document.createElement("td");
+        newFoul.setAttribute('contenteditable','false');
+        newFoul.appendChild(document.createTextNode("0"));
+        newPlayer.appendChild(newFoul);
+        /*******************************END TODO***************************************/
+
+        /* Creates new row for player */
+        var current = document.getElementById("final");
+        current.appendChild(newPlayer);
+      }
+      $(window).ready(findID);
+    </script>
     <script  type="text/javascript">
       function selectRoster(i){
         console.log("roster options selected");
