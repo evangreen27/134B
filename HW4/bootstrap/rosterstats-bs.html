@@ -101,78 +101,138 @@
       }
       function loadPlayers(i){
         var newPlayer = document.createElement("tr"); //creates new row for each player
-
-        /* Gets jersey number */
-        var newJersey = document.createElement("td");
-        newJersey.setAttribute('contenteditable','false');
-        var inputJersey= localStorage.getItem("jersey"+i);
-        newJersey.appendChild(document.createTextNode("#" + inputJersey));
-        newPlayer.appendChild(newJersey);
-
-        /* Gets name */
-        var newName = document.createElement("td");
-        newName.setAttribute('contenteditable','false');
-        var inputName= localStorage.getItem("fname"+i);
-        var inputlName= localStorage.getItem("lname"+i);
-        newName.appendChild(document.createTextNode(inputName + " " + inputlName));
-        newPlayer.appendChild(newName);
-
-        /*******************************TODO: grab actual data***************************************/
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /* Creates number */
-        var newFoul = document.createElement("td");
-        newFoul.setAttribute('contenteditable','false');
-        newFoul.appendChild(document.createTextNode("0"));
-        newPlayer.appendChild(newFoul);
-        /*******************************END TODO***************************************/
-
-        /* Creates new row for player */
-        var current = document.getElementById("final");
-        current.appendChild(newPlayer);
+        
+                /* Gets jersey number */
+                var newJersey = document.createElement("td");
+                newJersey.setAttribute('contenteditable','false');
+                var inputJersey= localStorage.getItem("jersey"+i);
+                newJersey.appendChild(document.createTextNode("#" + inputJersey));
+                newPlayer.appendChild(newJersey);
+        
+                /* Gets name */
+                var newName = document.createElement("td");
+                newName.setAttribute('contenteditable','false');
+                var inputName= localStorage.getItem("fname"+i);
+                var inputlName= localStorage.getItem("lname"+i);
+                newName.appendChild(document.createTextNode(inputName + " " + inputlName));
+                newPlayer.appendChild(newName);
+        
+                /*******************************TODO: grab actual data***************************************/
+                /* Creates foul */
+                var newFoul = document.createElement("td");
+                var newFoulEdit = document.createElement("input");
+                newFoulEdit.setAttribute('type','number');
+                newFoulEdit.setAttribute('class','form-control');
+                newFoulEdit.setAttribute('id', "foul"+i);
+                var inputFoul = localStorage.getItem("foul"+i);
+                if(!inputFoul) inputFoul = 0;
+                newFoulEdit.setAttribute('value', inputFoul);
+                newFoul.appendChild(newFoulEdit);
+                newPlayer.appendChild(newFoul);
+                /* Creates number */
+                var newRC = document.createElement("td");
+                var newRCEdit = document.createElement("input");
+                newRCEdit.setAttribute('type','number');
+                newRCEdit.setAttribute('class','form-control');
+                newRCEdit.setAttribute('id', "RC"+i);
+                var inputRC = localStorage.getItem("RC"+i);
+                if(!inputRC) inputRC = 0;
+                newRCEdit.setAttribute('value', inputRC);
+                newRC.appendChild(newRCEdit);
+                newPlayer.appendChild(newRC);
+                /* Creates number */
+                var newYC = document.createElement("td");
+                var newYCEdit = document.createElement("input");
+                newYCEdit.setAttribute('type','number');
+                newYCEdit.setAttribute('class','form-control');
+                newYCEdit.setAttribute('id', "YC"+i);
+                var inputYC = localStorage.getItem("YC"+i);
+                if(!inputYC) inputYC = 0;
+                newYCEdit.setAttribute('value', inputYC);
+                newYC.appendChild(newYCEdit);
+                newPlayer.appendChild(newYC);
+                /* Creates number */
+                var newSOG = document.createElement("td");
+                var newSOGEdit = document.createElement("input");
+                newSOGEdit.setAttribute('type','number');
+                newSOGEdit.setAttribute('class','form-control');
+                newSOGEdit.setAttribute('id', "SOG"+i);
+                var inputSOG = localStorage.getItem("SOG"+i);
+                if(!inputSOG) inputSOG = 0;
+                newSOGEdit.setAttribute('value', inputSOG);
+                newSOG.appendChild(newSOGEdit);
+                newPlayer.appendChild(newSOG);
+                /* Creates number */
+                var newGoal = document.createElement("td");
+                var newGoalEdit = document.createElement("input");
+                newGoalEdit.setAttribute('type','number');
+                newGoalEdit.setAttribute('class','form-control');
+                newGoalEdit.setAttribute('id', "Goal"+i);
+                var inputGoal = localStorage.getItem("Goal"+i);
+                if(!inputGoal) inputGoal = 0;
+                newGoalEdit.setAttribute('value', inputGoal);
+                newGoal.appendChild(newGoalEdit);
+                newPlayer.appendChild(newGoal);
+                /* Creates number */
+                var newCK = document.createElement("td");
+                var newCKEdit = document.createElement("input");
+                newCKEdit.setAttribute('type','number');
+                newCKEdit.setAttribute('class','form-control');
+                newCKEdit.setAttribute('id', "CK"+i);
+                var inputCK = localStorage.getItem("CK"+i);
+                if(!inputCK) inputCK = 0;
+                newCKEdit.setAttribute('value', inputCK);
+                newCK.appendChild(newCKEdit);
+                newPlayer.appendChild(newCK);
+                /* Creates number */
+                var newGK = document.createElement("td");
+                var newGKEdit = document.createElement("input");
+                newGKEdit.setAttribute('type','number');
+                newGKEdit.setAttribute('class','form-control');
+                newGKEdit.setAttribute('id', "GK"+i);
+                var inputGK = localStorage.getItem("GK"+i);
+                if(!inputGK) inputGK = 0;
+                newGKEdit.setAttribute('value', inputGK);
+                newGK.appendChild(newGKEdit);
+                newPlayer.appendChild(newGK);
+                /* Creates number */
+                var newPK = document.createElement("td");
+                var newPKEdit = document.createElement("input");
+                newPKEdit.setAttribute('type','number');
+                newPKEdit.setAttribute('class','form-control');
+                newPKEdit.setAttribute('id', "PK"+i);
+                var inputPK = localStorage.getItem("PK"+i);
+                if(!inputPK) inputPK = 0;
+                newPKEdit.setAttribute('value', inputPK);
+                newPK.appendChild(newPKEdit);
+                newPlayer.appendChild(newPK);
+                /* Creates number */
+                var newTI = document.createElement("td");
+                var newTIEdit = document.createElement("input");
+                newTIEdit.setAttribute('type','number');
+                newTIEdit.setAttribute('class','form-control');
+                newTIEdit.setAttribute('id', "TI"+i);
+                var inputTI = localStorage.getItem("TI"+i);
+                if(!inputTI) inputTI = 0;
+                newTIEdit.setAttribute('value', inputTI);
+                newTI.appendChild(newTIEdit);
+                newPlayer.appendChild(newTI);
+                /* Creates number */
+                var newApp = document.createElement("td");
+                var newAppEdit = document.createElement("input");
+                newAppEdit.setAttribute('type','number');
+                newAppEdit.setAttribute('class','form-control');
+                newAppEdit.setAttribute('id', "app"+i);
+                var inputApp = localStorage.getItem("app"+i);
+                if(!inputApp) inputApp = 0;
+                newAppEdit.setAttribute('value', inputApp);
+                newApp.appendChild(newAppEdit);
+                newPlayer.appendChild(newApp);
+                /*******************************END TODO***************************************/
+        
+                /* Creates new row for player */
+                var current = document.getElementById("final");
+                current.appendChild(newPlayer);
       }
       $(window).ready(findID);
     </script>
