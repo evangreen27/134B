@@ -79,7 +79,7 @@
             <h1>Sign Up</h1>
 
             <div class="form-field">
-              <label><b>Username (Email)</b></label><br />
+              <label><b>Username</b></label><br />
               <input type="text" placeholder="username" id="uname" required>
               <br /><br />
 
@@ -105,8 +105,8 @@
               <label><b>Team ID (Existing Team)</b></label><br />
               <input type="text" placeholder="Example: 0" id="team" >
               <br />
-              <label><b>Team ID (Create Team)</b></label><br />
-              <input type="text" placeholder="Example: 8" id="team" >
+              <label><b>Team Name (Create Team)</b></label><br />
+              <input type="text" placeholder="Example: Broncos" id="newteam" >
               <br />
             </div>
 <br />
@@ -154,15 +154,33 @@
         var inputName= document.getElementById("fname");
         var inputlName= document.getElementById("lname");
         var inputPW= document.getElementById("psw");
-        var inputTeamID= document.getElementById("team")
 
-        database.ref(loc).set({
+        if(document.getElementById(newteam)){
+          var teamsRef = firebase.database().ref('Teams/').orderByKey();
+          console.log(teamsRef);
+          var inputTeamID= document.getElementById("team");
+          firebase.database.ref(loc).set({
           fname: inputName.value,
           lname: inputlName.value,
           password: inputPW.value,
           team: inputTeamID.value
         });
-        window.alert("sign up success! you're now signed up!")
+        }
+        else{
+          database.ref('Teams/').once("value").then(function(snapshot) {
+            var len = snapshot.val().length;
+            database.ref('Teams/' + len).set({
+              name: document.getElementById("newteam").value
+            });
+            database.ref(loc).set({
+              fname: inputName.value,
+              lname: inputlName.value,
+              password: inputPW.value,
+              team: snapshot.val().length
+             });
+            });
+        }
+        window.alert("sign up success! you're now signed up!");
         return false;
       });
     </script>
