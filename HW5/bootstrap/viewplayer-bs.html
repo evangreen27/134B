@@ -20,6 +20,24 @@
       window.location.replace("login-bs.html");
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDn3DjgaXptmpsabv2KnvboBML7_9QCiL4",
+      authDomain: "cse134bejj.firebaseapp.com",
+      databaseURL: "https://cse134bejj.firebaseio.com",
+      projectId: "cse134bejj",
+      storageBucket: "cse134bejj.appspot.com",
+      messagingSenderId: "1089448133130"
+    };
+    firebase.initializeApp(config);
+  </script>
 </head>
 
   <body>
@@ -78,31 +96,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script  type="text/javascript">
-      function findID(){
-        //find the correct playerid out of those created - the id attribute of the names (h4)
-        console.log("finding IDs");
-        var playerid =  window.location.search.substring(1).split("=")[1];
-        console.log(playerid);
-        var i;
-        i = parseInt(playerid);
-          loadPlayers(i);
-      }
-      function loadPlayers(i){
+      function loadPlayers(){
         console.log("loading Players");
           // create a new element
           // and give it some content
           var newPlayer = document.createElement("div");
           newPlayer.setAttribute('class','card');
-          var inputName= localStorage.getItem("fname"+i);
-          var inputlName= localStorage.getItem("lname"+i);
-          var inputEmail= localStorage.getItem("email"+i);
-          var inputDob= localStorage.getItem("dob"+i);
-          var inputJersey= localStorage.getItem("jersey"+i);
-          var inputPosition= localStorage.getItem("position"+i);
-          var inputYcaptain= localStorage.getItem("ycaptain"+i);
-          var inputNcaptain= localStorage.getItem("ncaptain"+i);
 
-          var dataImage = localStorage.getItem("photo" + i);
+          firebase.database().ref('Users/' + localStorage.getItem("user")).once('value').then(function(snapshot) {
+            var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+            var inputName= (snapshot.val() && snapshot.val().fname) || 'Anonymous';
+            var inputlName= (snapshot.val() && snapshot.val().lname) || 'Anonymous';
+            var inputEmail= (snapshot.val() && snapshot.val().email) || 'Anonymous';
+            var inputDob= (snapshot.val() && snapshot.val().dob) || 'Anonymous';
+            var inputJersey=(snapshot.val() && snapshot.val().jersey) || 'Anonymous';
+            var inputPosition= (snapshot.val() && snapshot.val().position) || 'Anonymous';
+            var inputYcaptain= (snapshot.val() && snapshot.val().captain) || 'Anonymous';
+            var inputNcaptain= (snapshot.val() && snapshot.val().captain) || 'Anonymous';
+            var dataImage= (snapshot.val() && snapshot.val().photo) || 'Anonymous';
+          });
+
           photo = document.createElement("img");
           photo.setAttribute("src", "data:image/png;base64," + dataImage);
           photo.setAttribute("class","card-img-top");
@@ -135,7 +148,7 @@
           console.log(toparse);
           document.getElementById("editplayer").setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
     }
-    $(window).ready(findID);
+    $(window).ready(loadPlayers);
     </script>
     <script  type="text/javascript">
       function logout(){
