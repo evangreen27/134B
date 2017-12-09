@@ -113,7 +113,7 @@
         </label>
       </div>
       <button type = "submit" class="btn btn-primary">Add Player</button>
-      <button type = "btn" class="btn btn-primary" onclick="window.location.href='roster-bs.html'">Back to Roster</button>
+      <button type = "button" class="btn btn-primary" onclick="window.location.href='roster-bs.html'">Back to Roster</button>
     </form>
     <br /><br />
 
@@ -130,25 +130,27 @@
         console.log("setting");
         console.log(teamID);
         var database = firebase.database();
-        var loc = "Teams/" + teamID + "/" + "players/" + document.getElementById("fname").value + " " + document.getElementById("lname").value + " " + document.getElementById("jersey").value;
+        var loc = "Teams/" + teamID + "/" + "players/" + document.getElementById("fname").value + document.getElementById("lname").value + document.getElementById("jersey").value;
         playerPhoto = document.getElementById("preview");
         imgData = getBase64Image(playerPhoto);
-        var inputName= document.getElementById("fname");
-        var inputlName= document.getElementById("lname");
-        var inputEmail= document.getElementById("email");
-        var inputDob= document.getElementById("dob");
-        var inputJersey= document.getElementById("jersey");
-        var inputPosition= document.getElementById("position");
-        var inputYcaptain= document.getElementById("ycaptain");
+        var inputName= document.getElementById("fname").value.trim();
+        var inputlName= document.getElementById("lname").value.trim();
+        var inputEmail= document.getElementById("email").value.trim();
+        var inputDob= document.getElementById("dob").value.trim();
+        var inputJersey= document.getElementById("jersey").value.trim();
+        var inputPosition= document.getElementById("position").value.trim();
+        var inputYcaptain= document.getElementById("ycaptain").value.trim();
+        console.log(inputName);
         database.ref(loc).set({photo: imgData,
-          fname: inputName.value,
-          lname: inputlName.value,
-          email: inputEmail.value,
-          dob: inputDob.value,
-          jersey: inputJersey.value,
-          position: inputPosition.value,
-          captain: inputYcaptain.value
+          fname: inputName,
+          lname: inputlName,
+          email: inputEmail,
+          dob: inputDob,
+          jersey: inputJersey,
+          position: inputPosition,
+          captain: inputYcaptain
         });
+        window.alert("added successfully, return to roster or add more players!");
         return false;
     });
     function start(){
