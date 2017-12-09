@@ -116,6 +116,9 @@
               col2.setAttribute('class','col-4');
               var col3 = document.createElement("div");
               col3.setAttribute('class','col-4');
+              var details = document.createElement("div");
+              details.style.width = "100%";
+              details.style.padding = "10px";
 
               var toparse = 'editgame-bs.html?id='+ i;
               newGame.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
@@ -127,9 +130,26 @@
               col2.appendChild(content2);
               var content3 = document.createTextNode(inputLoc);
               col3.appendChild(content3);
+              var content4;
+              if(inputOwnScore && inputOppScore){
+                if(inputOwnScore > inputOppScore) content4 = document.createTextNode("WIN!");
+                else if (inputOwnScore < inputOppScore) content4 = document.createTextNode("LOSE");
+                else content4 = document.createTextNode("TIE");
+                details.appendChild(content4);
+                details.appendChild(document.createElement("br"));
+              }
+              var content5 = document.createTextNode("Our Score: " + (inputOwnScore || "TBA"));
+              var content6 = document.createTextNode("Their Score: " + (inputOppScore || "TBA"));
+              details.appendChild(content5);
+              details.appendChild(document.createElement("br"));
+              details.appendChild(content6);
+              details.appendChild(document.createElement("br"));
+              details.appendChild(document.createElement("br"));
+
               newGame.appendChild(col1);
               newGame.appendChild(col2);
               newGame.appendChild(col3);
+              newGame.appendChild(details);
 
               var current = document.getElementById("final");
               var parent = document.getElementById("gametable");
