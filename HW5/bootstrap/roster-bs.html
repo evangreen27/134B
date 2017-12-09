@@ -20,6 +20,24 @@
       window.location.replace("login-bs.html");
     }
   </script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDn3DjgaXptmpsabv2KnvboBML7_9QCiL4",
+      authDomain: "cse134bejj.firebaseapp.com",
+      databaseURL: "https://cse134bejj.firebaseio.com",
+      projectId: "cse134bejj",
+      storageBucket: "cse134bejj.appspot.com",
+      messagingSenderId: "1089448133130"
+    };
+    firebase.initializeApp(config);
+  </script>
 </head>
 
   <body>
@@ -76,16 +94,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script  type="text/javascript">
-      function findID(){
-        console.log("finding IDs");
-        var i;
-        var playerid= localStorage.getItem("playerid");
-        for (i=0; i<playerid; i++){
-          //check if the player has been deleted, if their name is "0" then they have been.
-          if(localStorage.getItem("fname"+i) != "0"){
-           loadPlayers(i);
+    var teamID;
+    function start(){
+      var database = firebase.database();
+      var loc = "Users/" + localStorage.getItem("user");
+      console.log(teamID);
+      database.ref(loc).once('value').then(function(snapshot) {
+        teamID = snapshot.val().team;
+      });
+      setTimeout(function(){
+        console.log(teamID);
+        loc = "Teams/" + teamID + "/" + "players/";
+      database.ref(loc).once("value").then(function(snapshot) {
+        console.log(teamID);
+        console.log(snapshot.val());
+        for(var key in snapshot.val()){
+          if(snapshot.val().hasOwnProperty(key)){
+            //console.log(key + " -> " + snapshot.val()[key]);
+            loadPlayers(snapshot.val()[key]);
           }
         }
+        //loadPlayers(snapshot);
+      });
+      },1000)
       }
       function loadPlayers(i){
         console.log("loading Players");
@@ -93,22 +124,23 @@
           // and give it some content
           var newPlayer = document.createElement("div");
           newPlayer.setAttribute('class','card');
-          var inputName= localStorage.getItem("fname"+i);
-          var inputlName= localStorage.getItem("lname"+i);
-          var inputEmail= localStorage.getItem("email"+i);
-          var inputDob= localStorage.getItem("dob"+i);
-          var inputJersey= localStorage.getItem("jersey"+i);
-          var inputPosition= localStorage.getItem("position"+i);
-          var inputYcaptain= localStorage.getItem("ycaptain"+i);
-          var inputNcaptain= localStorage.getItem("ncaptain"+i);
+     
+          var inputName= i["fname"];
+          var inputlName= i["lname"];
+          var inputEmail= i["email"];
+          var inputDob= i["dob"];
+          var inputJersey= i["jersey"];
+          var inputPosition= i["position"];
+          var inputYcaptain= i["captain"];
+          var inputNcaptain= i["captain"];
+          var dataImage= i["photo"];
 
-          var dataImage = localStorage.getItem("photo" + i);
           photo = document.createElement("img");
           photo.setAttribute("src", "data:image/png;base64," + dataImage);
           photo.setAttribute("class","card-img-top");
           photo.setAttribute('style',"display: flex;");
           //the following code determines which player to view when its div is clicked
-          var toparse = 'viewplayer-bs.html?id='+ i;
+          var toparse = 'viewplayer-bs.html?id='+ "Teams/" + teamID + "/players/"  + i["fname"] + " " + i["lname"] + " " + i["jersey"];
           newPlayer.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
           newPlayer.setAttribute("style","cursor:pointer");
           //TODO: insert code for checking file size on server?
@@ -136,7 +168,7 @@
           current.appendChild(newPlayer);
           parent.insertBefore(newPlayer, current);
     }
-    $(window).ready(findID);
+    $(window).ready(start);
     </script>
     <script  type="text/javascript">
       function selectRoster(i){

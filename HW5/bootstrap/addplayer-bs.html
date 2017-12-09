@@ -38,13 +38,6 @@
     messagingSenderId: "1089448133130"
   };
   firebase.initializeApp(config);
-  var database = firebase.database();
-  var loc = "Users/" + localStorage.getItem("user");
-  var teamID;
-  database.ref(loc).on("value", function(snapshot) {
-    teamID = snapshot.val().team;
-    console.log(teamID);
-  });
 </script>
 </head>
 
@@ -120,6 +113,7 @@
         </label>
       </div>
       <button type = "submit" class="btn btn-primary">Add Player</button>
+      <button type = "btn" class="btn btn-primary" onclick="window.location.href='roster-bs.html'">Back to Roster</button>
     </form>
     <br /><br />
 
@@ -131,9 +125,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script  type="text/javascript">
+    var teamID;
       $('#addplayerform').submit(function() {
         console.log("setting");
-        loc = "Teams/" + teamID + "/" + "players/" + document.getElementById("fname").value + " " + document.getElementById("lname").value + " " + document.getElementById("jersey").value;
+        console.log(teamID);
+        var database = firebase.database();
+        var loc = "Teams/" + teamID + "/" + "players/" + document.getElementById("fname").value + " " + document.getElementById("lname").value + " " + document.getElementById("jersey").value;
         playerPhoto = document.getElementById("preview");
         imgData = getBase64Image(playerPhoto);
         var inputName= document.getElementById("fname");
@@ -152,7 +149,16 @@
           position: inputPosition.value,
           captain: inputYcaptain.value
         });
+        return false;
     });
+    function start(){
+      var database = firebase.database();
+      var loc = "Users/" + localStorage.getItem("user");
+      database.ref(loc).once('value').then(function(snapshot) {
+        teamID = snapshot.val().team;
+        console.log(snapshot.val());
+      });
+    }
     function getBase64Image(img) {
     var canvas = document.createElement("canvas");
 
@@ -164,6 +170,7 @@
     var dataURL = canvas.toDataURL("image/png");
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
     }
+    $(window).ready(start);
     </script>
     <script  type="text/javascript">
       function logout(){
