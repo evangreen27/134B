@@ -21,6 +21,31 @@
       window.location.replace("login-bs.html");
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDn3DjgaXptmpsabv2KnvboBML7_9QCiL4",
+      authDomain: "cse134bejj.firebaseapp.com",
+      databaseURL: "https://cse134bejj.firebaseio.com",
+      projectId: "cse134bejj",
+      storageBucket: "cse134bejj.appspot.com",
+      messagingSenderId: "1089448133130"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
+    var loc = "Users/" + localStorage.getItem("user");
+    var teamID;
+    database.ref(loc).on("value", function(snapshot) {
+      teamID = snapshot.val().team;
+      console.log(teamID);
+    });
+  </script>
 </head>
 
   <body>
@@ -68,17 +93,14 @@
     <label for="location">Location</label>
     <input type="text" class="form-control" id="location" placeholder="Qwest Field, Seattle">
   </div>
-
-  <!--
-<div class="form-group">
-  <label for="score">Score- Your Team (If already played)</label>
-  <input type="int" class="form-control" id="ownscore" placeholder="Score (number)" required='false'>
-</div>
-<div class="form-group">
-  <label for="score">Score- Opponent (If already played)</label>
-  <input type="int" class="form-control" id="oppscore" placeholder="Score (number)" required='false'>
-</div>
--->
+  <div class="form-group">
+    <label for="score">Score- Your Team (If already played)</label>
+    <input type="int" class="form-control" id="ownscore" placeholder="Score (number)" required='false'>
+  </div>
+  <div class="form-group">
+    <label for="score">Score- Opponent (If already played)</label>
+    <input type="int" class="form-control" id="oppscore" placeholder="Score (number)" required='false'>
+  </div>
 
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -93,21 +115,21 @@
     <script  type="text/javascript">
       $('#addgameform').submit(function() {
         console.log("setting");
-        var gameid = localStorage.getItem("gameid");
-        if (!gameid){
-          gameid = 0;
-        }
-        localStorage.setItem("gameid", parseInt(gameid)+1);
-
-        inputOwnteam = document.getElementById("ownteam");
-        localStorage.setItem("ownteam" + gameid, inputOwnteam.value);
-        var inputOpp= document.getElementById("opponent");
-        localStorage.setItem("opponent" + gameid, inputOpp.value);
+        loc = "Teams/" + teamID + "/" + "games/" + document.getElementById("dateT").value + " " + document.getElementById("opponent").value;
+        var inputOwn= document.getElementById("ownteam");
+        var inputlOpp= document.getElementById("opponent");
         var inputDateT= document.getElementById("dateT");
-        localStorage.setItem("dateT" + gameid, inputDateT.value);
-        var inputLoc= document.getElementById("location");
-        localStorage.setItem("location" + gameid, inputLoc.value);
-
+        var inputLocation= document.getElementById("location");
+        var inputOwnScore = document.getElementById("ownscore");
+        var inputOppScore = document.getElementById("oppscore");
+        database.ref(loc).set({
+          ownName: inputOwn.value,
+          oppName: inputlOpp.value,
+          dateT: inputDateT.value,
+          location: inputLocation.value,
+          ownScore: inputOwnScore.value,
+          oppscore: inputOppScore
+        });
       });
       function logout(){
         console.log("logging out...");
