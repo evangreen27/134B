@@ -20,6 +20,31 @@
     window.location.replace("login-bs.html");
   }
 </script>
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDn3DjgaXptmpsabv2KnvboBML7_9QCiL4",
+    authDomain: "cse134bejj.firebaseapp.com",
+    databaseURL: "https://cse134bejj.firebaseio.com",
+    projectId: "cse134bejj",
+    storageBucket: "cse134bejj.appspot.com",
+    messagingSenderId: "1089448133130"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  var loc = "Users/" + localStorage.getItem("user");
+  var teamID;
+  database.ref(loc).once('value').then(function(snapshot) {
+    teamID = snapshot.val().team;
+    console.log(teamID);
+  });
+</script>
 </head>
 
   <body>
@@ -64,49 +89,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script  type="text/javascript">
-      function findID(){
-        console.log("finding IDs");
-        var i;
-        var playerid= localStorage.getItem("gameid");
-        for (i=0; i<playerid; i++){
-          //check if the game has been deleted, if their name is "0" then it has been.
-          if(localStorage.getItem("ownteam"+i) != "0"){
-           setGame(i);
-          }
-        }
-      }
-      function setGame(i){
+      function loadGames(){
+        console.log("loading Players");
+        // create a new element
+        // and give it some content
         var newGame = document.createElement("div");
         newGame.setAttribute('class','row');
-        var inputOwnteam= localStorage.getItem("ownteam"+i);
-        var inputOpp= localStorage.getItem("opponent"+i);
-        var inputDateT= localStorage.getItem("dateT"+i);
-        var inputLoc= localStorage.getItem("location"+i);
-        var col1 = document.createElement("div");
-        col1.setAttribute('class','col-4');
-        var col2 = document.createElement("div");
-        col2.setAttribute('class','col-4');
-        var col3 = document.createElement("div");
-        col3.setAttribute('class','col-4');
 
-        var toparse = 'editgame-bs.html?id='+ i;
-        newGame.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
-        newGame.setAttribute("style","cursor:pointer");
+        loc = "Teams/" + teamID + "/" + "games/";
+        firebase.database().ref(loc).once('value').then(function(snapshot) {
+          console.log("TeamID: " + teamID);
+          console.log(snapshot.val());
+          for(var key in snapshot.val()){
+            if(snapshot.val().hasOwnProperty(key)){
+              i = snapshot.val()[key];
+              var inputOwnteam = i["ownName"] || "You";
+              var inputOpp = i["oppName"];
+              var inputDateT = i["dateT"];
+              var inputLoc = i["location"];
+              var inputOwnScore = i["ownScore"];
+              var inputOppScore = i["oppScore"];
 
-        var content1 = document.createTextNode(inputDateT.replace("T", " "));
-        col1.appendChild(content1);
-        var content2 = document.createTextNode(inputOwnteam + " VS " + inputOpp);
-        col2.appendChild(content2);
-        var content3 = document.createTextNode(inputLoc);
-        col3.appendChild(content3);
-        newGame.appendChild(col1);
-        newGame.appendChild(col2);
-        newGame.appendChild(col3);
+              var col1 = document.createElement("div");
+              col1.setAttribute('class','col-4');
+              var col2 = document.createElement("div");
+              col2.setAttribute('class','col-4');
+              var col3 = document.createElement("div");
+              col3.setAttribute('class','col-4');
 
-        var current = document.getElementById("final");
-        var parent = document.getElementById("gametable");
-        current.appendChild(newGame);
-        parent.insertBefore(newGame, current);
+              var toparse = 'editgame-bs.html?id='+ i;
+              newGame.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
+              newGame.setAttribute("style","cursor:pointer");
+
+              var content1 = document.createTextNode(inputDateT.replace("T", " "));
+              col1.appendChild(content1);
+              var content2 = document.createTextNode(inputOwnteam + " VS " + inputOpp);
+              col2.appendChild(content2);
+              var content3 = document.createTextNode(inputLoc);
+              col3.appendChild(content3);
+              newGame.appendChild(col1);
+              newGame.appendChild(col2);
+              newGame.appendChild(col3);
+
+              var current = document.getElementById("final");
+              var parent = document.getElementById("gametable");
+              current.appendChild(newGame);
+              parent.insertBefore(newGame, current);
+              console.log("game loaded");
+            }
+          }
+        });
       }
       function logout(){
         console.log("logging out...");
@@ -114,7 +146,7 @@
         // Gets the username entered by the user, then sets local storage
         localStorage.removeItem("user");
       }
-      $(window).ready(findID);
+      $(window).ready(loadGames);
     </script>
   </body>
 </html>

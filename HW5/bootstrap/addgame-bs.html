@@ -41,7 +41,7 @@
     var database = firebase.database();
     var loc = "Users/" + localStorage.getItem("user");
     var teamID;
-    database.ref(loc).on("value", function(snapshot) {
+    database.ref(loc).once('value').then(function(snapshot) {
       teamID = snapshot.val().team;
       console.log(teamID);
     });
@@ -76,7 +76,7 @@
 
     <br /><br /><br />
     <h1 class="lead" style="text-align: center;">Add a Game!</h1>
-    <form id="addgameform" method = "POST" action = "" onsubmit="setGame();">
+    <form id="addgameform" method = "POST" action = "">
   <div class="form-group">
       <label for="ownteam">Your Team Name</label>
       <input type="text" class="form-control" id="ownteam" placeholder="Team Name">
@@ -95,11 +95,11 @@
   </div>
   <div class="form-group">
     <label for="score">Score- Your Team (If already played)</label>
-    <input type="int" class="form-control" id="ownscore" placeholder="Score (number)" required='false'>
+    <input type="int" class="form-control" id="ownscore" placeholder="Score (number)">
   </div>
   <div class="form-group">
     <label for="score">Score- Opponent (If already played)</label>
-    <input type="int" class="form-control" id="oppscore" placeholder="Score (number)" required='false'>
+    <input type="int" class="form-control" id="oppscore" placeholder="Score (number)">
   </div>
 
 <button type="submit" class="btn btn-primary">Submit</button>
@@ -128,8 +128,9 @@
           dateT: inputDateT.value,
           location: inputLocation.value,
           ownScore: inputOwnScore.value,
-          oppscore: inputOppScore
+          oppScore: inputOppScore.value
         });
+        return false;
       });
       function logout(){
         console.log("logging out...");
