@@ -21,6 +21,27 @@
       window.location.replace("home-bs.html");
     }
   </script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDn3DjgaXptmpsabv2KnvboBML7_9QCiL4",
+      authDomain: "cse134bejj.firebaseapp.com",
+      databaseURL: "https://cse134bejj.firebaseio.com",
+      projectId: "cse134bejj",
+      storageBucket: "cse134bejj.appspot.com",
+      messagingSenderId: "1089448133130"
+    };
+    firebase.initializeApp(config);
+  </script>
+  </head>
+
 </head>
 
   <body>
@@ -49,7 +70,8 @@
     <main role="main" class="container">
 <br /><br />
         <div class="form" style="text-align: center;">
-          <form action="login-bs.html">
+          <!-- <form action="login-bs.html"> -->
+            <form id="signupform" method = "POST" action = "">
             <div class="form-logo">
               <img src="img/score.png" alt="Score! Logo">
             </div>
@@ -58,7 +80,7 @@
 
             <div class="form-field">
               <label><b>Username (Email)</b></label><br />
-              <input type="text" placeholder="Email" id="uname" required>
+              <input type="text" placeholder="username" id="uname" required>
               <br /><br />
 
               <label><b>First Name</b></label><br />
@@ -76,6 +98,16 @@
               <label><b>Confirm Password</b></label><br />
               <input type="password" placeholder="Confirm Password" id="psw" required>
               <br />
+              <br />
+              <p>
+                For the next 2 below options, fill in only 1 of the sections.
+              </p>
+              <label><b>Team ID (Existing Team)</b></label><br />
+              <input type="text" placeholder="Example: 0" id="team" >
+              <br />
+              <label><b>Team ID (Create Team)</b></label><br />
+              <input type="text" placeholder="Example: 8" id="team" >
+              <br />
             </div>
 <br />
             <div class="signup-type">
@@ -88,7 +120,7 @@
             </div>
 <br />
             <div class="form-button">
-              <button class="btn" type="submit" onclick="login();">Sign Up</button>
+              <button class="btn" type="submit" >Sign Up</button>
             </div>
 <br />
           </form>
@@ -113,6 +145,28 @@
         var user = document.getElementById("uname");
         localStorage.setItem("user", user.value);
       }
+
+      $('#signupform').submit(function() {
+        console.log("setting");
+        var database = firebase.database();
+        var loc = "Users/" + document.getElementById("uname").value;
+
+        var inputName= document.getElementById("fname");
+        var inputlName= document.getElementById("lname");
+        var inputPW= document.getElementById("psw");
+        var inputTeamID= document.getElementById("team")
+
+        database.ref(loc).set({
+          fname: inputName.value,
+          lname: inputlName.value,
+          password: inputPW.value,
+          team: inputTeamID.value
+        });
+        window.alert("sign up success! you're now signed up!")
+        return false;
+      });
     </script>
+
+
   </body>
 </html>
