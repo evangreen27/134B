@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<!-- file size = 68.6kb -->
+<!-- Android load time on slow 3g = 6.23s (with cache cleared) -->
+<!-- Android load time on NON-BOOTSTRAP with slow 3g = 4.21s (with cache cleared) -->
+
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score! - Add Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+  integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    console.log("authenticating");
+
+    // Get username to check if exists (logged in)
+    var user = localStorage.getItem("user");
+    if (user == null) {
+      window.location.replace("login-bs.html");
+    }
+  </script>
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="home-bs.html">Score!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home-bs.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="schedule-bs.html">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login-bs.html" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br /><br /><br />
+    <h1 class="lead" style="text-align: center;">Add a Game!</h1>
+    <form id="addgameform" method = "POST" action = "" onsubmit="setGame();">
+  <div class="form-group">
+      <label for="ownteam">Your Team Name</label>
+      <input type="text" class="form-control" id="ownteam" placeholder="Team Name">
+    </div>
+  <div class="form-group">
+    <label for="opponent">Opponent</label>
+    <input type="text" class="form-control" id="opponent" placeholder="Team Name">
+  </div>
+  <div class="form-group">
+    <label for="dateT">Date and Time</label>
+    <input type="datetime-local" class="form-control" id="dateT">
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" class="form-control" id="location" placeholder="Qwest Field, Seattle">
+  </div>
+
+  <!--
+<div class="form-group">
+  <label for="score">Score- Your Team (If already played)</label>
+  <input type="int" class="form-control" id="ownscore" placeholder="Score (number)" required='false'>
+</div>
+<div class="form-group">
+  <label for="score">Score- Opponent (If already played)</label>
+  <input type="int" class="form-control" id="oppscore" placeholder="Score (number)" required='false'>
+</div>
+-->
+
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script  type="text/javascript">
+      $('#addgameform').submit(function() {
+        console.log("setting");
+        var gameid = localStorage.getItem("gameid");
+        if (!gameid){
+          gameid = 0;
+        }
+        localStorage.setItem("gameid", parseInt(gameid)+1);
+
+        inputOwnteam = document.getElementById("ownteam");
+        localStorage.setItem("ownteam" + gameid, inputOwnteam.value);
+        var inputOpp= document.getElementById("opponent");
+        localStorage.setItem("opponent" + gameid, inputOpp.value);
+        var inputDateT= document.getElementById("dateT");
+        localStorage.setItem("dateT" + gameid, inputDateT.value);
+        var inputLoc= document.getElementById("location");
+        localStorage.setItem("location" + gameid, inputLoc.value);
+
+      });
+      function logout(){
+        console.log("logging out...");
+
+        // Gets the username entered by the user, then sets local storage
+        localStorage.removeItem("user");
+      }
+    </script>
+  </body>
+</html>

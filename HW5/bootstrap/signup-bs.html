@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<!-- file size = 248kb -->
+<!-- Android load time on slow 3g = 11.11s (with cache cleared) -->
+<!-- Android load time on NON-BOOTSTRAP with slow 3g = 4.15s (with cache cleared) -->
+
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score! - Sign Up</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+  integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    console.log("authenticating");
+
+    // Get username to check if exists (logged in)
+    var user = localStorage.getItem("user");
+    if (user != null) {
+      window.location.replace("home-bs.html");
+    }
+  </script>
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="home-bs.html">Score!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home-bs.html">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+<br /><br />
+        <div class="form" style="text-align: center;">
+          <form action="login-bs.html">
+            <div class="form-logo">
+              <img src="img/score.png" alt="Score! Logo">
+            </div>
+
+            <h1>Sign Up</h1>
+
+            <div class="form-field">
+              <label><b>Username (Email)</b></label><br />
+              <input type="text" placeholder="Email" id="uname" required>
+              <br /><br />
+
+              <label><b>First Name</b></label><br />
+              <input type="text" placeholder="First Name" id="fname" required>
+              <br /><br />
+
+              <label><b>Last Name</b></label><br />
+              <input type="text" placeholder="Last Name" id="lname" required>
+              <br /><br />
+
+              <label><b>Password</b></label><br />
+              <input type="password" placeholder="Password" id="psw" required>
+              <br /><br />
+
+              <label><b>Confirm Password</b></label><br />
+              <input type="password" placeholder="Confirm Password" id="psw" required>
+              <br />
+            </div>
+<br />
+            <div class="signup-type">
+              <p>
+                Who are you?
+              </p>
+              <input type="radio" name="position" value="player">Player<br>
+              <input type="radio" name="position" value="parent">Parent<br>
+              <input type="radio" name="position" value="coach">Coach<br>
+            </div>
+<br />
+            <div class="form-button">
+              <button class="btn" type="submit" onclick="login();">Sign Up</button>
+            </div>
+<br />
+          </form>
+        </div>
+        <div class="form-extra">
+          <a href="login-bs.html">Log In Instead</a>
+        </div>
+    </main>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script  type="text/javascript">
+      function login(){
+        console.log("setting");
+
+        // Gets the username entered by the user, then sets local storage
+        var user = document.getElementById("uname");
+        localStorage.setItem("user", user.value);
+      }
+    </script>
+  </body>
+</html>

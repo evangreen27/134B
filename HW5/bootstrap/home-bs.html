@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<!-- file size = 68.9kb -->
+<!-- Android load time on slow 3g = 6.17s (with cache cleared) -->
+<!-- Android load time on NON-BOOTSTRAP with slow 3g = 4.11s (with cache cleared) -->
+
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score! - Homepage</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    console.log("authenticating");
+
+    // Get username to check if exists (logged in)
+    var user = localStorage.getItem("user");
+    if (user == null) {
+      window.location.replace("login-bs.html");
+    }
+  </script>
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Score!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="schedule-bs.html">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login-bs.html" onclick="logout();">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container" id="mainparent">
+        <br /><br /><br />
+        <div class="jumbotron">
+               <div>
+                 <h1 class="display-3"><b id="teambold"></b></h1>
+                 <!-- TODO
+                 <br />
+                 <p class="lead">Wins: </p>
+                 <p class="lead">Losses: </p>
+                 <p class="lead">Ties: </p>
+               -->
+               </div>
+        </div>
+             <p>Upcoming Match</p>
+
+             <div id="final"></div>
+             <br />
+    </main>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script  type="text/javascript">
+      function init(){
+        document.getElementById("teambold").appendChild(document.createTextNode(localStorage.getItem("user").charAt(0).toUpperCase() + localStorage.getItem("user").slice(1)));
+
+        var gameid = localStorage.getItem("gameid")
+        if(gameid){
+          var i = parseInt(gameid) - 1; //gets the most recent game
+          //skips over deleted or finished games
+          while (localStorage.getItem("ownteam" + i) == "0"){
+            i--;
+          }
+          if(i >= 0){
+            var newGame = document.createElement("div");
+            newGame.setAttribute('class','row');
+            var inputOwnteam= localStorage.getItem("ownteam"+i);
+            var inputOpp= localStorage.getItem("opponent"+i);
+            var inputDateT= localStorage.getItem("dateT"+i);
+            var inputLoc= localStorage.getItem("location"+i);
+            var col1 = document.createElement("div");
+            col1.setAttribute('class','col-4');
+            var col2 = document.createElement("div");
+            col2.setAttribute('class','col-4');
+            var col3 = document.createElement("div");
+            col3.setAttribute('class','col-4');
+
+            var toparse = 'editgame-bs.html?id='+ i;
+            newGame.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
+            newGame.setAttribute("style","cursor:pointer");
+
+            var content1 = document.createTextNode(inputDateT.replace("T", " "));
+            col1.appendChild(content1);
+            var content2 = document.createTextNode(inputOwnteam + " VS " + inputOpp);
+            col2.appendChild(content2);
+            var content3 = document.createTextNode(inputLoc);
+            col3.appendChild(content3);
+            newGame.appendChild(col1);
+            newGame.appendChild(col2);
+            newGame.appendChild(col3);
+
+            var current = document.getElementById("final");
+            var parent = document.getElementById("mainparent");
+            current.appendChild(newGame);
+            parent.insertBefore(newGame, current);
+          }
+        }
+      }
+      function logout(){
+        console.log("logging out...");
+
+        // Gets the username entered by the user, then sets local storage
+        localStorage.removeItem("user");
+      }
+      $(window).ready(init)
+    </script>
+  </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<body>
+    <div class="homepage">
+            <ul class = "navbarUl">
+              <li class = "navbarLi"><a style="background-color: #76b852">Home</a></li>
+              <li class = "navbarLi"><a href="schedule.html">Schedule</a></li>
+              <li class = "navbarLi"><a href="roster.html">Roster</a></li>
+            </ul>
+
+        <section class = "central">
+        <h1>Wins: TODO</h1>
+        <h1>Losses: TODO</h1>
+        <h1>Ties: TODO</h1>
+        <hr />
+        <h1 class="heading">UPCOMING MATCH</h1>
+        <ul class="navbarUlsmall">
+            <a class = "leftside">TODO:DATE</a>
+            <a class = "rightside">TODO:TEAMS</a>
+        </ul>
+        <p>TODO: update with schedule info</p>
+        </section>
+
+    </div>
+</body>
+-->
+</html>

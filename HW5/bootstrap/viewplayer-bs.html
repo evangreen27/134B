@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<!-- file size = 237kb -->
+<!-- Android load time on slow 3g = 11.03s (with cache cleared) -->
+<!-- Android load time on NON-BOOTSTRAP with slow 3g = 7.47s (with cache cleared) -->
+
+<head>
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score! - View Player</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+  integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script type="text/javascript">
+    console.log("authenticating");
+
+    // Get username to check if exists (logged in)
+    var user = localStorage.getItem("user");
+    if (user == null) {
+      window.location.replace("login-bs.html");
+    }
+  </script>
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="home-bs.html">Score!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home-bs.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="schedule-bs.html">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="roster-bs.html">Roster</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login-bs.html" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br /><br /><br />
+    <div class="container">
+
+      <div><button class="btn" onclick="" id="editplayer" style="cursor:pointer">Edit Player</button></div>
+      <br />
+
+      <section class = "central">
+        <!-- TODO
+        <div class="head-selector">
+            <select>
+                <option value="roster" selected>Team Roster</option>
+                <option value="stats">Team Statistics</option>
+            </select>
+        </div>
+        -->
+        <br />
+        <div class="card-group" id="cardgroup" style="display:flex">
+          <div id="final"></div>
+        </div>
+      </div>
+        <br />
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script  type="text/javascript">
+      function findID(){
+        //find the correct playerid out of those created - the id attribute of the names (h4)
+        console.log("finding IDs");
+        var playerid =  window.location.search.substring(1).split("=")[1];
+        console.log(playerid);
+        var i;
+        i = parseInt(playerid);
+          loadPlayers(i);
+      }
+      function loadPlayers(i){
+        console.log("loading Players");
+          // create a new element
+          // and give it some content
+          var newPlayer = document.createElement("div");
+          newPlayer.setAttribute('class','card');
+          var inputName= localStorage.getItem("fname"+i);
+          var inputlName= localStorage.getItem("lname"+i);
+          var inputEmail= localStorage.getItem("email"+i);
+          var inputDob= localStorage.getItem("dob"+i);
+          var inputJersey= localStorage.getItem("jersey"+i);
+          var inputPosition= localStorage.getItem("position"+i);
+          var inputYcaptain= localStorage.getItem("ycaptain"+i);
+          var inputNcaptain= localStorage.getItem("ncaptain"+i);
+
+          var dataImage = localStorage.getItem("photo" + i);
+          photo = document.createElement("img");
+          photo.setAttribute("src", "data:image/png;base64," + dataImage);
+          photo.setAttribute("class","card-img-top");
+          photo.setAttribute('style',"display: flex;");
+          //TODO: insert code for checking file size on server?
+          newPlayer.appendChild(photo);
+
+
+          newh4 = document.createElement("h4");
+          newh4.setAttribute('class','card-title');
+          var newContent = document.createTextNode("#" + inputJersey + " " + inputName + " " + inputlName);
+          newh4.appendChild(newContent);
+          newPlayer.appendChild(newh4); //add the text node to the newly created div.
+          newPlayer.appendChild(document.createElement("br"));
+
+          newContent = document.createTextNode("Position: " + inputPosition);
+          newPlayer.appendChild(newContent); //add the text node to the newly created div.
+          newPlayer.appendChild(document.createElement("br"));
+
+          newContent = document.createTextNode("DOB: " + inputDob);
+          newPlayer.appendChild(newContent); //add the text node to the newly created div.
+          newPlayer.appendChild(document.createElement("br"));
+
+          // add the newly created element and its content into the DOM
+          var current = document.getElementById("final");
+          var parent = document.getElementById("cardgroup");
+          current.appendChild(newPlayer);
+          parent.insertBefore(newPlayer, current);
+          var toparse = 'editplayer-bs.html?id='+ i;
+          console.log(toparse);
+          document.getElementById("editplayer").setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
+    }
+    $(window).ready(findID);
+    </script>
+    <script  type="text/javascript">
+      function logout(){
+        console.log("logging out...");
+
+        // Gets the username entered by the user, then sets local storage
+        localStorage.removeItem("user");
+      }
+    </script>
+  </body>
+</html>
