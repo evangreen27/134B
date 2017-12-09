@@ -21,6 +21,24 @@
       window.location.replace("login-bs.html");
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDn3DjgaXptmpsabv2KnvboBML7_9QCiL4",
+      authDomain: "cse134bejj.firebaseapp.com",
+      databaseURL: "https://cse134bejj.firebaseio.com",
+      projectId: "cse134bejj",
+      storageBucket: "cse134bejj.appspot.com",
+      messagingSenderId: "1089448133130"
+    };
+    firebase.initializeApp(config);
+  </script>
 </head>
 
   <body>
@@ -107,29 +125,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script  type="text/javascript">
-       $('#editplayerform').submit(function() {
+      $('#editplayerform').submit(function() {
         console.log("setting");
-        var playerid =  parseInt(window.location.search.substring(1).split("=")[1]);
-
+        var database = firebase.database();
+        var i =  window.location.search.substring(1).split("=")[1];
         playerPhoto = document.getElementById("preview");
         imgData = getBase64Image(playerPhoto);
-        localStorage.setItem("photo" + playerid, imgData);
-        var inputName= document.getElementById("fname");
-        localStorage.setItem("fname" + playerid, inputName.value);
-        var inputlName= document.getElementById("lname");
-        localStorage.setItem("lname" + playerid, inputlName.value);
-        var inputEmail= document.getElementById("email");
-        localStorage.setItem("email" + playerid, inputEmail.value);
-        var inputDob= document.getElementById("dob");
-        localStorage.setItem("dob" + playerid, inputDob.value);
-        var inputJersey= document.getElementById("jersey");
-        localStorage.setItem("jersey" + playerid, inputJersey.value);
-        var inputPosition= document.getElementById("position");
-        localStorage.setItem("position" + playerid, inputPosition.value);
-        var inputYcaptain= document.getElementById("ycaptain");
-        localStorage.setItem("ycaptain" + playerid, inputYcaptain.value);
-        var inputNcaptain= document.getElementById("ncaptain");
-        localStorage.setItem("ncaptain" + playerid, inputNcaptain.value);
+        var inputName= document.getElementById("fname").value.trim();
+        var inputlName= document.getElementById("lname").value.trim();
+        var inputEmail= document.getElementById("email").value.trim();
+        var inputDob= document.getElementById("dob").value.trim();
+        var inputJersey= document.getElementById("jersey").value.trim();
+        var inputPosition= document.getElementById("position").value.trim();
+        var inputYcaptain= document.getElementById("ycaptain").value.trim();
+        console.log(inputName);
+        database.ref(i).set({photo: imgData,
+          fname: inputName,
+          lname: inputlName,
+          email: inputEmail,
+          dob: inputDob,
+          jersey: inputJersey,
+          position: inputPosition,
+          captain: inputYcaptain
+        });
+          
+        });
+        window.alert("added successfully, return to roster or add more players!");
+        return false;
     });
     function getBase64Image(img) {
     var canvas = document.createElement("canvas");
@@ -143,20 +165,24 @@
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
     }
     function setimage(){
-      var playerid =  parseInt(window.location.search.substring(1).split("=")[1]);
-      var dataImage = localStorage.getItem("photo" + playerid);
-      var previous = document.getElementById("preview");
-      preview.setAttribute("src", "data:image/png;base64," + dataImage);
-      document.getElementById("fname").setAttribute("value", localStorage.getItem("fname" + playerid));
-      document.getElementById("lname").setAttribute("value", localStorage.getItem("lname" + playerid));
-      document.getElementById("email").setAttribute("value", localStorage.getItem("email" + playerid));
-      document.getElementById("dob").setAttribute("value", localStorage.getItem("dob" + playerid));
-      document.getElementById("jersey").setAttribute("value", localStorage.getItem("jersey" + playerid));
-      document.getElementById("position").setAttribute("value", localStorage.getItem("position" + playerid));
-      document.getElementById("ycaptain").setAttribute("value", localStorage.getItem("ycaptain" + playerid));
-      document.getElementById("ycaptain").setAttribute("value", localStorage.getItem("ycaptain" + playerid));
-      var toparse = 'viewplayer-bs.html?id='+ playerid;
-      document.getElementById("editplayerform").setAttribute('action',toparse);
+      var i =  window.location.search.substring(1).split("=")[1];
+      console.log(i);
+      var database = firebase.database();
+      database.ref(i).once("value").then(function(snapshot) {
+        var dataImage= snapshot.val().photo;
+        var previous = document.getElementById("preview");
+        preview.setAttribute("src", "data:image/png;base64," + dataImage);
+        document.getElementById("fname").setAttribute("value", snapshot.val().fname);
+        document.getElementById("lname").setAttribute("value", snapshot.val().lname);
+        document.getElementById("email").setAttribute("value", snapshot.val().email);
+        document.getElementById("dob").setAttribute("value", snapshot.val().dob);
+        document.getElementById("jersey").setAttribute("value", snapshot.val().jersey);
+        document.getElementById("position").setAttribute("value", snapshot.val().position);
+        document.getElementById("ycaptain").setAttribute("value", snapshot.val().captain);
+        document.getElementById("ycaptain").setAttribute("value", snapshot.val().captain);
+        var toparse = 'viewplayer-bs.html?id='+ i;
+        document.getElementById("editplayerform").setAttribute('action',toparse);
+      });
     }
     function deletePlayer(){
       document.getElementById("editplayerform").setAttribute('action','roster-bs.html');

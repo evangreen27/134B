@@ -108,26 +108,17 @@
           newPlayer.setAttribute('class','card');
           console.log(i);
           var database = firebase.database();
-          var inputName;
-            var inputlName;
-            var inputEmail;
-            var inputDob;
-            var inputJersey;
-            var inputPosition;
-            var inputYcaptain;
-            var inputNcaptain;
-            var dataImage;
-      database.ref(i).once("value").then(function(snapshot) {
-            inputName= snapshot.val().fname;
-            inputlName= snapshot.val().lname;
-            inputEmail= snapshot.val().email;
-            inputDob= snapshot.val().dob;
-            inputJersey=snapshot.val().jersey;
-            inputPosition= snapshot.val().position;
-            inputYcaptain= snapshot.val().captain;
-            inputNcaptain= snapshot.val().captain;
-            dataImage= snapshot.val().photo;
-            photo = document.createElement("img");
+          database.ref(i).once("value").then(function(snapshot) {
+            var inputName= snapshot.val().fname;
+            var inputlName= snapshot.val().lname;
+            var inputEmail= snapshot.val().email;
+            var inputDob= snapshot.val().dob;
+            var inputJersey=snapshot.val().jersey;
+            var inputPosition= snapshot.val().position;
+            var inputYcaptain= snapshot.val().captain;
+            var inputNcaptain= snapshot.val().captain;
+            var dataImage= snapshot.val().photo;
+            var photo = document.createElement("img");
             photo.setAttribute("src", "data:image/png;base64," + dataImage);
             photo.setAttribute("class","card-img-top");
             photo.setAttribute('style',"display: flex;");
@@ -155,7 +146,7 @@
             var parent = document.getElementById("cardgroup");
             current.appendChild(newPlayer);
             parent.insertBefore(newPlayer, current);
-            var toparse = i;
+            var toparse = 'editplayer-bs.html?id='+ i;
             console.log(toparse);
             document.getElementById("editplayer").setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
           });
