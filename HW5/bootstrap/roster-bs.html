@@ -101,22 +101,19 @@
       console.log(teamID);
       database.ref(loc).once('value').then(function(snapshot) {
         teamID = snapshot.val().team;
-      });
-      setTimeout(function(){
-        console.log(teamID);
         loc = "Teams/" + teamID + "/" + "players/";
-      database.ref(loc).once("value").then(function(snapshot) {
+        database.ref(loc).once("value").then(function(snapshot2) {
         console.log(teamID);
-        console.log(snapshot.val());
-        for(var key in snapshot.val()){
-          if(snapshot.val().hasOwnProperty(key)){
+        console.log(snapshot2.val());
+        for(var key in snapshot2.val()){
+          if(snapshot2.val().hasOwnProperty(key)){
             //console.log(key + " -> " + snapshot.val()[key]);
-            loadPlayers(snapshot.val()[key]);
+            loadPlayers(snapshot2.val()[key]);
           }
         }
         //loadPlayers(snapshot);
       });
-      },1000)
+      });
       }
       function loadPlayers(i){
         console.log("loading Players");
@@ -140,7 +137,7 @@
           photo.setAttribute("class","card-img-top");
           photo.setAttribute('style',"display: flex;");
           //the following code determines which player to view when its div is clicked
-          var toparse = 'viewplayer-bs.html?id='+ "Teams/" + teamID + "/players/"  + i["fname"] + " " + i["lname"] + " " + i["jersey"];
+          var toparse = 'viewplayer-bs.html?id='+ "Teams/" + teamID + "/players/"  + i["fname"] + i["lname"] + i["jersey"];
           newPlayer.setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
           newPlayer.setAttribute("style","cursor:pointer");
           //TODO: insert code for checking file size on server?

@@ -108,53 +108,57 @@
           newPlayer.setAttribute('class','card');
           console.log(i);
           var database = firebase.database();
-          var loc = "Teams/0/players";
-      database.ref(loc).once("value").then(function(snapshot) {
-            console.log( snapshot.val().cat.val());
-            var inputName= snapshot.val().fname;
-            var inputlName= snapshot.val().lname;
-            var inputEmail= snapshot.val().email;
-            var inputDob= snapshot.val().dob;
-            var inputJersey=snapshot.val().jersey;
-            var inputPosition= snapshot.val().position;
-            var inputYcaptain= snapshot.val().captain;
-            var inputNcaptain= snapshot.val().captain;
-            var dataImage= snapshot.child("cat").photo;
+          var inputName;
+            var inputlName;
+            var inputEmail;
+            var inputDob;
+            var inputJersey;
+            var inputPosition;
+            var inputYcaptain;
+            var inputNcaptain;
+            var dataImage;
+      database.ref(i).once("value").then(function(snapshot) {
+            inputName= snapshot.val().fname;
+            inputlName= snapshot.val().lname;
+            inputEmail= snapshot.val().email;
+            inputDob= snapshot.val().dob;
+            inputJersey=snapshot.val().jersey;
+            inputPosition= snapshot.val().position;
+            inputYcaptain= snapshot.val().captain;
+            inputNcaptain= snapshot.val().captain;
+            dataImage= snapshot.val().photo;
+            photo = document.createElement("img");
+            photo.setAttribute("src", "data:image/png;base64," + dataImage);
+            photo.setAttribute("class","card-img-top");
+            photo.setAttribute('style',"display: flex;");
+            //TODO: insert code for checking file size on server?
+            newPlayer.appendChild(photo);
+
+
+            newh4 = document.createElement("h4");
+            newh4.setAttribute('class','card-title');
+            var newContent = document.createTextNode("#" + inputJersey + " " + inputName + " " + inputlName);
+            newh4.appendChild(newContent);
+            newPlayer.appendChild(newh4); //add the text node to the newly created div.
+            newPlayer.appendChild(document.createElement("br"));
+
+            newContent = document.createTextNode("Position: " + inputPosition);
+            newPlayer.appendChild(newContent); //add the text node to the newly created div.
+            newPlayer.appendChild(document.createElement("br"));
+
+            newContent = document.createTextNode("DOB: " + inputDob);
+            newPlayer.appendChild(newContent); //add the text node to the newly created div.
+            newPlayer.appendChild(document.createElement("br"));
+
+            // add the newly created element and its content into the DOM
+            var current = document.getElementById("final");
+            var parent = document.getElementById("cardgroup");
+            current.appendChild(newPlayer);
+            parent.insertBefore(newPlayer, current);
+            var toparse = i;
+            console.log(toparse);
+            document.getElementById("editplayer").setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
           });
-
-          setTimeout(function(){
-          photo = document.createElement("img");
-          photo.setAttribute("src", "data:image/png;base64," + dataImage);
-          photo.setAttribute("class","card-img-top");
-          photo.setAttribute('style',"display: flex;");
-          //TODO: insert code for checking file size on server?
-          newPlayer.appendChild(photo);
-
-
-          newh4 = document.createElement("h4");
-          newh4.setAttribute('class','card-title');
-          var newContent = document.createTextNode("#" + inputJersey + " " + inputName + " " + inputlName);
-          newh4.appendChild(newContent);
-          newPlayer.appendChild(newh4); //add the text node to the newly created div.
-          newPlayer.appendChild(document.createElement("br"));
-
-          newContent = document.createTextNode("Position: " + inputPosition);
-          newPlayer.appendChild(newContent); //add the text node to the newly created div.
-          newPlayer.appendChild(document.createElement("br"));
-
-          newContent = document.createTextNode("DOB: " + inputDob);
-          newPlayer.appendChild(newContent); //add the text node to the newly created div.
-          newPlayer.appendChild(document.createElement("br"));
-
-          // add the newly created element and its content into the DOM
-          var current = document.getElementById("final");
-          var parent = document.getElementById("cardgroup");
-          current.appendChild(newPlayer);
-          parent.insertBefore(newPlayer, current);
-          var toparse = 'editplayer-bs.html?id='+ i["fname"] + " " + i["lname"] + " " + i["jersey"];
-          console.log(toparse);
-          document.getElementById("editplayer").setAttribute('onclick',"window.location.href=" + "'" + toparse + "'");
-          },3000);
 
     }
     $(window).ready(start);
